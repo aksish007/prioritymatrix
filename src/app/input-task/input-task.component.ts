@@ -9,9 +9,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
-import { MatSliderModule } from '@angular/material/slider';
 import { MatIconModule } from '@angular/material/icon';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { NgxSliderModule, Options } from '@angular-slider/ngx-slider';
 
 @Component({
   selector: 'app-input-task',
@@ -27,9 +27,9 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     MatCheckboxModule,
     MatButtonModule,
     MatListModule,
-    MatSliderModule,
     MatIconModule,
     DragDropModule,
+    NgxSliderModule,
   ],
 })
 export class InputTaskComponent implements OnInit {
@@ -40,6 +40,20 @@ export class InputTaskComponent implements OnInit {
   important: number = 1;
   tasks: Task[] = [];
   isEditMode: boolean = false;
+
+  urgentOptions: Options = {
+    floor: 1,
+    ceil: 5,
+    step: 1,
+    showTicks: true
+  };
+
+  importantOptions: Options = {
+    floor: 1,
+    ceil: 5,
+    step: 1,
+    showTicks: true
+  };
 
   constructor(private taskService: TaskService) {}
 
