@@ -52,6 +52,7 @@ export class MatrixComponent implements OnInit, OnDestroy {
 
   resetMatrix() {
     this.taskService.resetMatrix();
+    this.quadrants = this.taskService.getTasksByQuadrant(); // Refresh the quadrants after reset
   }
 
   ngOnDestroy() {

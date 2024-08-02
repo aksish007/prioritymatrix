@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { TaskService } from '../task.service';
 import { Task } from '../models/task.model';
 import { FormsModule } from '@angular/forms';
@@ -12,6 +12,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { NgxSliderModule, Options } from '@angular-slider/ngx-slider';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-input-task',
@@ -32,7 +33,7 @@ import { NgxSliderModule, Options } from '@angular-slider/ngx-slider';
     NgxSliderModule,
   ],
 })
-export class InputTaskComponent implements OnInit {
+export class InputTaskComponent implements OnInit, OnDestroy {
   id: number | null = null;
   title: string = '';
   description: string = '';
@@ -40,6 +41,7 @@ export class InputTaskComponent implements OnInit {
   important: number = 1;
   tasks: Task[] = [];
   isEditMode: boolean = false;
+  tasksSubscription: Subscription | null = null;
 
   urgentOptions: Options = {
     floor: 1,
@@ -58,7 +60,9 @@ export class InputTaskComponent implements OnInit {
   constructor(private taskService: TaskService) {}
 
   ngOnInit() {
-    this.tasks = this.taskService.getTasks();
+    this.tasksSubscription = this.taskService.getTasks().subscribe(tasks => {
+      this.tasks = tasks;
+    });
   }
 
   addOrUpdateTask() {
@@ -77,7 +81,6 @@ export class InputTaskComponent implements OnInit {
     }
 
     this.resetForm();
-    this.tasks = this.taskService.getTasks();
   }
 
   editTask(task: Task) {
@@ -91,12 +94,10 @@ export class InputTaskComponent implements OnInit {
 
   deleteTask(taskId: number) {
     this.taskService.deleteTask(taskId);
-    this.tasks = this.taskService.getTasks();
   }
 
   autoSort() {
     this.taskService.autoSortTasks();
-    this.tasks = this.taskService.getTasks();
   }
 
   resetForm() {
@@ -106,5 +107,9 @@ export class InputTaskComponent implements OnInit {
     this.urgent = 1;
     this.important = 1;
     this.isEditMode = false;
+  }
+
+  ngOnDestroy() {
+    this.tasksSubscription?.unsubscribe();
   }
 }

@@ -7,6 +7,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class TaskService {
   private tasks: Task[] = this.loadTasks();
+  private tasksSubject: BehaviorSubject<Task[]> = new BehaviorSubject<Task[]>(this.tasks);
   private matrixTasks: Task[] = this.loadMatrixTasks();
   private matrixTasksSubject: BehaviorSubject<Task[]> = new BehaviorSubject<Task[]>(this.matrixTasks);
 
@@ -26,11 +27,13 @@ export class TaskService {
   }
 
   constructor() {
+    this.tasksSubject.next(this.tasks);
     this.matrixTasksSubject.next(this.matrixTasks);
   }
 
   addTask(task: Task) {
     this.tasks.push(task);
+    this.tasksSubject.next(this.tasks);
     this.saveTasks();
   }
 
@@ -39,16 +42,18 @@ export class TaskService {
     if (taskIndex > -1) {
       this.tasks[taskIndex] = updatedTask;
     }
+    this.tasksSubject.next(this.tasks);
     this.saveTasks();
   }
 
   deleteTask(taskId: number) {
     this.tasks = this.tasks.filter(task => task.id !== taskId);
+    this.tasksSubject.next(this.tasks);
     this.saveTasks();
   }
 
-  getTasks(): Task[] {
-    return this.tasks;
+  getTasks(): Observable<Task[]> {
+    return this.tasksSubject.asObservable();
   }
 
   getMatrixTasks(): Observable<Task[]> {
@@ -80,6 +85,7 @@ export class TaskService {
     this.matrixTasks = [...this.matrixTasks, ...this.tasks];
     this.tasks = [];
     this.matrixTasksSubject.next(this.matrixTasks);
+    this.tasksSubject.next(this.tasks);
     this.saveTasks();
   }
 
@@ -87,6 +93,7 @@ export class TaskService {
     this.tasks = [...this.tasks, ...this.matrixTasks];
     this.matrixTasks = [];
     this.matrixTasksSubject.next(this.matrixTasks);
+    this.tasksSubject.next(this.tasks);
     this.saveTasks();
   }
 
