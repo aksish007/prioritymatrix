@@ -1,16 +1,13 @@
-/* Custom scrollbar for the input task component */
 .input-panel {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    overflow-y: auto;
   }
   
   .task-list-card {
     padding: 20px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
-    overflow-y: auto;
   }
   
   .task-list-title {
@@ -50,12 +47,15 @@
     justify-content: flex-end;
   }
   
+  .task-list-container {
+    max-height: 300px; /* Adjust based on your design */
+    overflow-y: auto;
+  }
+  
   .task-list {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    max-height: 300px; /* Adjust based on your design */
-    overflow-y: auto;
   }
   
   .task-item {
