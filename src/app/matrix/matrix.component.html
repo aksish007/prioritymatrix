@@ -1,20 +1,12 @@
 <div class="matrix-container">
     <h2 class="matrix-title">
       Eisenhower Matrix
-      <button mat-icon-button (click)="resetMatrix()" aria-label="Reset Matrix">
+      <button title="Reset Matrix" mat-icon-button (click)="resetMatrix()" aria-label="Reset Matrix">
         <mat-icon>refresh</mat-icon>
       </button>
     </h2>
   
     <div class="matrix-grid">
-      <div class="quadrant" cdkDropList [cdkDropListData]="quadrants[0].tasks" (cdkDropListDropped)="drop($event)">
-        <h3>{{ quadrants[0].title }}</h3>
-        <div *ngFor="let task of quadrants[0].tasks" cdkDrag class="task-item" [@fadeIn]>
-          <mat-list-item>
-            <span class="task-text">{{ task.title }} - {{ task.description }}</span>
-          </mat-list-item>
-        </div>
-      </div>
       <div class="quadrant" cdkDropList [cdkDropListData]="quadrants[1].tasks" (cdkDropListDropped)="drop($event)">
         <h3>{{ quadrants[1].title }}</h3>
         <div *ngFor="let task of quadrants[1].tasks" cdkDrag class="task-item" [@fadeIn]>
@@ -23,9 +15,9 @@
           </mat-list-item>
         </div>
       </div>
-      <div class="quadrant" cdkDropList [cdkDropListData]="quadrants[2].tasks" (cdkDropListDropped)="drop($event)">
-        <h3>{{ quadrants[2].title }}</h3>
-        <div *ngFor="let task of quadrants[2].tasks" cdkDrag class="task-item" [@fadeIn]>
+      <div class="quadrant" cdkDropList [cdkDropListData]="quadrants[0].tasks" (cdkDropListDropped)="drop($event)">
+        <h3>{{ quadrants[0].title }}</h3>
+        <div *ngFor="let task of quadrants[0].tasks" cdkDrag class="task-item" [@fadeIn]>
           <mat-list-item>
             <span class="task-text">{{ task.title }} - {{ task.description }}</span>
           </mat-list-item>
@@ -34,6 +26,14 @@
       <div class="quadrant" cdkDropList [cdkDropListData]="quadrants[3].tasks" (cdkDropListDropped)="drop($event)">
         <h3>{{ quadrants[3].title }}</h3>
         <div *ngFor="let task of quadrants[3].tasks" cdkDrag class="task-item" [@fadeIn]>
+          <mat-list-item>
+            <span class="task-text">{{ task.title }} - {{ task.description }}</span>
+          </mat-list-item>
+        </div>
+      </div>
+      <div class="quadrant" cdkDropList [cdkDropListData]="quadrants[2].tasks" (cdkDropListDropped)="drop($event)">
+        <h3>{{ quadrants[2].title }}</h3>
+        <div *ngFor="let task of quadrants[2].tasks" cdkDrag class="task-item" [@fadeIn]>
           <mat-list-item>
             <span class="task-text">{{ task.title }} - {{ task.description }}</span>
           </mat-list-item>

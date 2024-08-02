@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { TaskService } from '../task.service';
 import { Task } from '../models/task.model';
-import { CdkDragDrop, transferArrayItem, DragDropModule } from '@angular/cdk/drag-drop';
+import { CdkDragDrop,moveItemInArray, transferArrayItem, DragDropModule } from '@angular/cdk/drag-drop';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
@@ -48,14 +48,15 @@ export class MatrixComponent implements OnInit, OnDestroy {
 
   drop(event: CdkDragDrop<Task[]>) {
     if (event.previousContainer === event.container) {
-      return;
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+    } else {
+      transferArrayItem(
+        event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex
+      );
     }
-    transferArrayItem(
-      event.previousContainer.data,
-      event.container.data,
-      event.previousIndex,
-      event.currentIndex
-    );
     this.taskService.updateTasks(this.quadrants);
   }
 
