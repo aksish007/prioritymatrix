@@ -5,12 +5,12 @@
       <div *ngIf="!isEditMode" class="inline-form">
         <mat-form-field appearance="outline" class="inline-input">
           <mat-label>Title</mat-label>
-          <input matInput [(ngModel)]="title" name="title" required />
+          <input title="Title" matInput [(ngModel)]="title" name="title" required />
         </mat-form-field>
   
         <mat-form-field appearance="outline" class="inline-input">
           <mat-label>Description</mat-label>
-          <input matInput [(ngModel)]="description" name="description" required />
+          <input title="Description" matInput [(ngModel)]="description" name="description" required />
         </mat-form-field>
   
         <div class="slider-container">
@@ -37,12 +37,12 @@
             <div *ngIf="editedTaskId === task.id" class="inline-form">
               <mat-form-field appearance="outline" class="inline-input">
                 <mat-label>Title</mat-label>
-                <input matInput [(ngModel)]="title" name="title" required />
+                <input title="Title" matInput [(ngModel)]="title" name="title" required />
               </mat-form-field>
   
               <mat-form-field appearance="outline" class="inline-input">
                 <mat-label>Description</mat-label>
-                <input matInput [(ngModel)]="description" name="description" required />
+                <input title="Title" matInput [(ngModel)]="description" name="description" required />
               </mat-form-field>
   
               <div class="slider-container">
@@ -63,7 +63,7 @@
       </div>
   
       <div class="button-group">
-        <button mat-raised-button color="accent" (click)="autoSort()">Auto Sort</button>
+        <button mat-raised-button color="accent" (click)="autoSort()">Visualize</button>
         <button mat-raised-button color="warn" (click)="clearAll()">Clear All</button>
       </div>
     </mat-card>

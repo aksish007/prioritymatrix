@@ -1,8 +1,20 @@
-<as-split direction="horizontal">
-  <as-split-area [size]="50">
-    <app-input-task></app-input-task>
-  </as-split-area>
-  <as-split-area [size]="50">
-    <app-matrix></app-matrix>
-  </as-split-area>
-</as-split>
+<div class="app-container">
+  <header class="app-header">
+    <h1>Priority Matrix</h1>
+  </header>
+  
+  <main class="app-content">
+    <as-split direction="horizontal" gutterSize="10">
+      <as-split-area [size]="50">
+        <app-input-task></app-input-task>
+      </as-split-area>
+      <as-split-area [size]="50">
+        <app-matrix></app-matrix>
+      </as-split-area>
+    </as-split>
+  </main>
+  
+  <footer class="app-footer">
+    <p>&copy; 2024 Prioirty Matrix App. Developed By - Subhadip Halder.</p>
+  </footer>
+</div>

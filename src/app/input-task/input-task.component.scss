@@ -1,13 +1,16 @@
+/* Custom scrollbar for the input task component */
 .input-panel {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    overflow-y: auto;
   }
   
   .task-list-card {
     padding: 20px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
+    overflow-y: auto;
   }
   
   .task-list-title {
@@ -51,6 +54,8 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
+    max-height: 300px; /* Adjust based on your design */
+    overflow-y: auto;
   }
   
   .task-item {
@@ -72,5 +77,44 @@
     margin-top: 20px;
     display: flex;
     justify-content: flex-end;
+  }
+  
+  /* Custom scrollbar styles */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+  
+  /* Firefox custom scrollbar */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #888 #f1f1f1;
+  }
+  
+  *::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  *::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  
+  *::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 10px;
+    border: 2px solid #f1f1f1;
   }
   
