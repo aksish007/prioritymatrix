@@ -29,6 +29,8 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
+    overflow-y: auto; /* Ensure that the content inside the quadrant can scroll */
+    max-height: 400px; /* Set a maximum height for the quadrant */
   }
   
   .quadrant h3 {
@@ -46,12 +48,19 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    max-width: 100%; /* Ensure the task item does not exceed the width of the quadrant */
+    word-wrap: break-word; /* Ensure long words break and do not overflow */
+    overflow: hidden; /* Hide any overflow content */
   }
   
   .task-text {
     font-size: 16px;
     font-weight: 500;
     color: #555;
+    white-space: nowrap; /* Prevent text from wrapping */
+    overflow: hidden; /* Hide any overflow content */
+    text-overflow: ellipsis; /* Show ellipsis when text overflows */
+    max-width: 100%; /* Ensure the text does not exceed the width of the task item */
   }
   
   .arrows {
