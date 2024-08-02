@@ -1,0 +1,48 @@
+<div class="input-panel">
+    <mat-card>
+      <h2>Add/Edit Task</h2>
+      <form (ngSubmit)="addOrUpdateTask()">
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Title</mat-label>
+          <input matInput [(ngModel)]="title" name="title" required />
+        </mat-form-field>
+  
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Description</mat-label>
+          <textarea matInput [(ngModel)]="description" name="description" required></textarea>
+        </mat-form-field>
+  
+        <div class="slider-container">
+          <mat-label>Urgency</mat-label>
+          <mat-slider min="1" max="5" step="1" thumbLabel tickInterval="1" [(ngModel)]="urgent" name="urgent"></mat-slider>
+        </div>
+  
+        <div class="slider-container">
+          <mat-label>Importance</mat-label>
+          <mat-slider min="1" max="5" step="1" thumbLabel tickInterval="1" [(ngModel)]="important" name="important"></mat-slider>
+        </div>
+  
+        <div>
+          <button mat-raised-button color="primary" type="submit">{{ isEditMode ? 'Update Task' : 'Add Task' }}</button>
+        </div>
+      </form>
+    </mat-card>
+  
+    <mat-card>
+      <h2>Task List</h2>
+      <div cdkDropListGroup>
+        <div *ngFor="let task of tasks" cdkDrag>
+          <mat-list-item>
+            <span>{{ task.title }} - {{ task.description }}</span>
+            <button mat-icon-button (click)="editTask(task)"><mat-icon>edit</mat-icon></button>
+            <button mat-icon-button (click)="deleteTask(task.id)"><mat-icon>delete</mat-icon></button>
+          </mat-list-item>
+        </div>
+      </div>
+  
+      <div>
+        <button mat-raised-button (click)="autoSort()">Auto Sort</button>
+      </div>
+    </mat-card>
+  </div>
+  

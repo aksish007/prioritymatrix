@@ -1,1 +1,62 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    background-color: #f4f4f4;
+    height: 100vh;
+    overflow: hidden;
+  }
+  
+  .container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1200px;
+    height: 100%;
+  }
+  
+  .input-panel, .matrix-panel {
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+  }
+  
+  .matrix {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 10px;
+  }
+  
+  .quadrant {
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: #e3f2fd;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .quadrant h3 {
+    margin-top: 0;
+  }
+  
+  .quadrant .mat-list-item {
+    margin: 5px 0;
+  }
+  
+  .full-width {
+    width: 100%;
+  }
+  
+  @media (max-width: 768px) {
+    .container {
+      flex-direction: column;
+    }
+  
+    .input-panel, .matrix-panel {
+      width: 100%;
+    }
+  }
+  
