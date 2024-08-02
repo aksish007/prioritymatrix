@@ -9,6 +9,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { AngularSplitModule } from 'angular-split';
 import { Subscription } from 'rxjs';
+import { trigger, style, animate, transition } from '@angular/animations';
 
 @Component({
   selector: 'app-matrix',
@@ -24,6 +25,14 @@ import { Subscription } from 'rxjs';
     MatButtonModule,
     AngularSplitModule
   ],
+  animations: [
+    trigger('fadeIn', [
+      transition(':enter', [
+        style({ opacity: 0 }),
+        animate('300ms', style({ opacity: 1 }))
+      ])
+    ])
+  ]
 })
 export class MatrixComponent implements OnInit, OnDestroy {
   quadrants: { title: string; tasks: Task[] }[] = [];

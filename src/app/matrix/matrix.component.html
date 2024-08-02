@@ -1,46 +1,55 @@
-<div class="matrix-panel">
-    <h2>Eisenhower Matrix <button mat-icon-button (click)="resetMatrix()"><mat-icon>refresh</mat-icon></button></h2>
-    <as-split direction="vertical" gutterSize="10">
-      <as-split-area [size]="50">
-        <as-split direction="horizontal" gutterSize="10">
-          <as-split-area [size]="50">
-            <div class="quadrant" cdkDropList [cdkDropListData]="quadrants[0].tasks" (cdkDropListDropped)="drop($event)">
-              <h3>{{ quadrants[0].title }}</h3>
-              <div *ngFor="let task of quadrants[0].tasks" cdkDrag>
-                <mat-list-item>{{ task.title }} - {{ task.description }}</mat-list-item>
-              </div>
-            </div>
-          </as-split-area>
-          <as-split-area [size]="50">
-            <div class="quadrant" cdkDropList [cdkDropListData]="quadrants[1].tasks" (cdkDropListDropped)="drop($event)">
-              <h3>{{ quadrants[1].title }}</h3>
-              <div *ngFor="let task of quadrants[1].tasks" cdkDrag>
-                <mat-list-item>{{ task.title }} - {{ task.description }}</mat-list-item>
-              </div>
-            </div>
-          </as-split-area>
-        </as-split>
-      </as-split-area>
-      <as-split-area [size]="50">
-        <as-split direction="horizontal" gutterSize="10">
-          <as-split-area [size]="50">
-            <div class="quadrant" cdkDropList [cdkDropListData]="quadrants[2].tasks" (cdkDropListDropped)="drop($event)">
-              <h3>{{ quadrants[2].title }}</h3>
-              <div *ngFor="let task of quadrants[2].tasks" cdkDrag>
-                <mat-list-item>{{ task.title }} - {{ task.description }}</mat-list-item>
-              </div>
-            </div>
-          </as-split-area>
-          <as-split-area [size]="50">
-            <div class="quadrant" cdkDropList [cdkDropListData]="quadrants[3].tasks" (cdkDropListDropped)="drop($event)">
-              <h3>{{ quadrants[3].title }}</h3>
-              <div *ngFor="let task of quadrants[3].tasks" cdkDrag>
-                <mat-list-item>{{ task.title }} - {{ task.description }}</mat-list-item>
-              </div>
-            </div>
-          </as-split-area>
-        </as-split>
-      </as-split-area>
-    </as-split>
+<div class="matrix-container">
+    <h2 class="matrix-title">
+      Eisenhower Matrix
+      <button mat-icon-button (click)="resetMatrix()" aria-label="Reset Matrix">
+        <mat-icon>refresh</mat-icon>
+      </button>
+    </h2>
+  
+    <div class="matrix-grid">
+      <div class="quadrant" cdkDropList [cdkDropListData]="quadrants[0].tasks" (cdkDropListDropped)="drop($event)">
+        <h3>{{ quadrants[0].title }}</h3>
+        <div *ngFor="let task of quadrants[0].tasks" cdkDrag class="task-item" [@fadeIn]>
+          <mat-list-item>
+            <span class="task-text">{{ task.title }} - {{ task.description }}</span>
+          </mat-list-item>
+        </div>
+      </div>
+      <div class="quadrant" cdkDropList [cdkDropListData]="quadrants[1].tasks" (cdkDropListDropped)="drop($event)">
+        <h3>{{ quadrants[1].title }}</h3>
+        <div *ngFor="let task of quadrants[1].tasks" cdkDrag class="task-item" [@fadeIn]>
+          <mat-list-item>
+            <span class="task-text">{{ task.title }} - {{ task.description }}</span>
+          </mat-list-item>
+        </div>
+      </div>
+      <div class="quadrant" cdkDropList [cdkDropListData]="quadrants[2].tasks" (cdkDropListDropped)="drop($event)">
+        <h3>{{ quadrants[2].title }}</h3>
+        <div *ngFor="let task of quadrants[2].tasks" cdkDrag class="task-item" [@fadeIn]>
+          <mat-list-item>
+            <span class="task-text">{{ task.title }} - {{ task.description }}</span>
+          </mat-list-item>
+        </div>
+      </div>
+      <div class="quadrant" cdkDropList [cdkDropListData]="quadrants[3].tasks" (cdkDropListDropped)="drop($event)">
+        <h3>{{ quadrants[3].title }}</h3>
+        <div *ngFor="let task of quadrants[3].tasks" cdkDrag class="task-item" [@fadeIn]>
+          <mat-list-item>
+            <span class="task-text">{{ task.title }} - {{ task.description }}</span>
+          </mat-list-item>
+        </div>
+      </div>
+      <div class="arrows">
+        <svg class="arrow-svg" viewBox="0 0 200 200" preserveAspectRatio="xMidYMid meet">
+          <defs>
+            <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+              <polygon points="0 0, 10 3.5, 0 7" />
+            </marker>
+          </defs>
+          <line x1="0" y1="100" x2="200" y2="100" stroke="black" stroke-width="2" marker-end="url(#arrowhead)" />
+          <line x1="100" y1="200" x2="100" y2="20" stroke="black" stroke-width="2" marker-end="url(#arrowhead)" />
+        </svg>
+      </div>
+    </div>
   </div>
   
