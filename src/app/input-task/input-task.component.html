@@ -1,47 +1,48 @@
 <div class="input-panel">
-    <mat-card>
-      <h2>Add/Edit Task</h2>
-      <form (ngSubmit)="addOrUpdateTask()">
-        <mat-form-field appearance="fill" class="full-width">
+    <mat-card class="input-card">
+      <h2 class="input-title">Add/Edit Task</h2>
+      <form (ngSubmit)="addOrUpdateTask()" class="task-form">
+        <mat-form-field appearance="outline" class="full-width">
           <mat-label>Title</mat-label>
           <input matInput [(ngModel)]="title" name="title" required />
         </mat-form-field>
   
-        <mat-form-field appearance="fill" class="full-width">
+        <mat-form-field appearance="outline" class="full-width">
           <mat-label>Description</mat-label>
           <textarea matInput [(ngModel)]="description" name="description" required></textarea>
         </mat-form-field>
   
         <div class="slider-container">
-          <label>Urgency</label>
+          <label class="slider-label">Urgency</label>
           <ngx-slider [(ngModel)]="urgent" [options]="urgentOptions" name="urgent"></ngx-slider>
         </div>
   
         <div class="slider-container">
-          <label>Importance</label>
+          <label class="slider-label">Importance</label>
           <ngx-slider [(ngModel)]="important" [options]="importantOptions" name="important"></ngx-slider>
         </div>
   
-        <div>
+        <div class="button-group">
           <button mat-raised-button color="primary" type="submit">{{ isEditMode ? 'Update Task' : 'Add Task' }}</button>
+          <button mat-raised-button color="warn" type="button" (click)="resetForm()">Reset</button>
         </div>
       </form>
     </mat-card>
   
-    <mat-card>
-      <h2>Task List</h2>
-      <div cdkDropListGroup>
-        <div *ngFor="let task of tasks" cdkDrag>
+    <mat-card class="task-list-card">
+      <h2 class="task-list-title">Task List</h2>
+      <div cdkDropListGroup class="task-list">
+        <div *ngFor="let task of tasks" cdkDrag class="task-item">
           <mat-list-item>
-            <span>{{ task.title }} - {{ task.description }}</span>
+            <span class="task-text">{{ task.title }} - {{ task.description }}</span>
             <button mat-icon-button (click)="editTask(task)"><mat-icon>edit</mat-icon></button>
             <button mat-icon-button (click)="deleteTask(task.id)"><mat-icon>delete</mat-icon></button>
           </mat-list-item>
         </div>
       </div>
   
-      <div>
-        <button mat-raised-button (click)="autoSort()">Auto Sort</button>
+      <div class="auto-sort-button">
+        <button mat-raised-button color="accent" (click)="autoSort()">Auto Sort</button>
       </div>
     </mat-card>
   </div>
