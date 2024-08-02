@@ -4,30 +4,33 @@
     gap: 20px;
   }
   
-  .input-card, .task-list-card {
+  .task-list-card {
     padding: 20px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
   }
   
-  .input-title, .task-list-title {
+  .task-list-title {
     margin-bottom: 20px;
     font-size: 24px;
     font-weight: 600;
     color: #333;
   }
   
-  .task-form {
+  .inline-form {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
     gap: 15px;
+    margin-bottom: 20px;
+    align-items: center;
   }
   
-  .full-width {
-    width: 100%;
+  .inline-input {
+    flex: 1 1 calc(50% - 15px);
   }
   
   .slider-container {
+    flex: 1 1 100%;
     display: flex;
     flex-direction: column;
     gap: 5px;
@@ -42,7 +45,6 @@
     display: flex;
     gap: 10px;
     justify-content: flex-end;
-    margin-top: 20px;
   }
   
   .task-list {
@@ -52,13 +54,13 @@
   }
   
   .task-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: #f9f9f9;
+    background: #fff;
     padding: 10px;
     border-radius: 5px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
   
   .task-text {

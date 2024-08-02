@@ -89,6 +89,14 @@ export class TaskService {
     this.saveTasks();
   }
 
+  clearAllTasks() {
+    this.tasks = [];
+    this.matrixTasks = [];
+    this.tasksSubject.next(this.tasks);
+    this.matrixTasksSubject.next(this.matrixTasks);
+    this.saveTasks();
+  }
+
   resetMatrix() {
     this.tasks = [...this.tasks, ...this.matrixTasks];
     this.matrixTasks = [];

@@ -39,6 +39,7 @@ export class InputTaskComponent implements OnInit, OnDestroy {
   important: number = 1;
   tasks: Task[] = [];
   isEditMode: boolean = false;
+  editedTaskId: number | null = null;
   tasksSubscription: Subscription | null = null;
 
   urgentOptions: Options = {
@@ -65,7 +66,7 @@ export class InputTaskComponent implements OnInit, OnDestroy {
 
   addOrUpdateTask() {
     const task: Task = {
-      id: this.id ?? Date.now(),
+      id: this.editedTaskId ?? Date.now(),
       title: this.title,
       description: this.description,
       urgent: this.urgent,
@@ -82,7 +83,7 @@ export class InputTaskComponent implements OnInit, OnDestroy {
   }
 
   editTask(task: Task) {
-    this.id = task.id;
+    this.editedTaskId = task.id;
     this.title = task.title;
     this.description = task.description;
     this.urgent = task.urgent;
@@ -92,10 +93,22 @@ export class InputTaskComponent implements OnInit, OnDestroy {
 
   deleteTask(taskId: number) {
     this.taskService.deleteTask(taskId);
+    if (this.editedTaskId === taskId) {
+      this.resetForm();
+    }
   }
 
   autoSort() {
     this.taskService.autoSortTasks();
+  }
+
+  clearAll() {
+    this.tasks = [];
+    this.taskService.clearAllTasks();
+  }
+
+  cancelEdit() {
+    this.resetForm();
   }
 
   resetForm() {
@@ -105,6 +118,7 @@ export class InputTaskComponent implements OnInit, OnDestroy {
     this.urgent = 1;
     this.important = 1;
     this.isEditMode = false;
+    this.editedTaskId = null;
   }
 
   ngOnDestroy() {

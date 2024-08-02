@@ -1,15 +1,16 @@
 <div class="input-panel">
-    <mat-card class="input-card">
-      <h2 class="input-title">Add/Edit Task</h2>
-      <form (ngSubmit)="addOrUpdateTask()" class="task-form">
-        <mat-form-field appearance="outline" class="full-width">
+    <mat-card class="task-list-card">
+      <h2 class="task-list-title">Task List</h2>
+  
+      <div *ngIf="!isEditMode" class="inline-form">
+        <mat-form-field appearance="outline" class="inline-input">
           <mat-label>Title</mat-label>
           <input matInput [(ngModel)]="title" name="title" required />
         </mat-form-field>
   
-        <mat-form-field appearance="outline" class="full-width">
+        <mat-form-field appearance="outline" class="inline-input">
           <mat-label>Description</mat-label>
-          <textarea matInput [(ngModel)]="description" name="description" required></textarea>
+          <input matInput [(ngModel)]="description" name="description" required />
         </mat-form-field>
   
         <div class="slider-container">
@@ -22,27 +23,48 @@
           <ngx-slider [(ngModel)]="important" [options]="importantOptions" name="important"></ngx-slider>
         </div>
   
-        <div class="button-group">
-          <button mat-raised-button color="primary" type="submit">{{ isEditMode ? 'Update Task' : 'Add Task' }}</button>
-          <button mat-raised-button color="warn" type="button" (click)="resetForm()">Reset</button>
-        </div>
-      </form>
-    </mat-card>
+        <button mat-raised-button color="primary" (click)="addOrUpdateTask()">{{ isEditMode ? 'Update Task' : 'Add Task' }}</button>
+      </div>
   
-    <mat-card class="task-list-card">
-      <h2 class="task-list-title">Task List</h2>
       <div cdkDropListGroup class="task-list">
         <div *ngFor="let task of tasks" cdkDrag class="task-item">
           <mat-list-item>
-            <span class="task-text">{{ task.title }} - {{ task.description }}</span>
-            <button mat-icon-button (click)="editTask(task)"><mat-icon>edit</mat-icon></button>
-            <button mat-icon-button (click)="deleteTask(task.id)"><mat-icon>delete</mat-icon></button>
+            <div *ngIf="editedTaskId !== task.id">
+              <span class="task-text">{{ task.title }} - {{ task.description }}</span>
+              <button mat-icon-button (click)="editTask(task)"><mat-icon>edit</mat-icon></button>
+              <button mat-icon-button (click)="deleteTask(task.id)"><mat-icon>delete</mat-icon></button>
+            </div>
+            <div *ngIf="editedTaskId === task.id" class="inline-form">
+              <mat-form-field appearance="outline" class="inline-input">
+                <mat-label>Title</mat-label>
+                <input matInput [(ngModel)]="title" name="title" required />
+              </mat-form-field>
+  
+              <mat-form-field appearance="outline" class="inline-input">
+                <mat-label>Description</mat-label>
+                <input matInput [(ngModel)]="description" name="description" required />
+              </mat-form-field>
+  
+              <div class="slider-container">
+                <label class="slider-label">Urgency</label>
+                <ngx-slider [(ngModel)]="urgent" [options]="urgentOptions" name="urgent"></ngx-slider>
+              </div>
+  
+              <div class="slider-container">
+                <label class="slider-label">Importance</label>
+                <ngx-slider [(ngModel)]="important" [options]="importantOptions" name="important"></ngx-slider>
+              </div>
+  
+              <button mat-raised-button color="primary" (click)="addOrUpdateTask()">Update</button>
+              <button mat-raised-button color="warn" (click)="cancelEdit()">Cancel</button>
+            </div>
           </mat-list-item>
         </div>
       </div>
   
-      <div class="auto-sort-button">
+      <div class="button-group">
         <button mat-raised-button color="accent" (click)="autoSort()">Auto Sort</button>
+        <button mat-raised-button color="warn" (click)="clearAll()">Clear All</button>
       </div>
     </mat-card>
   </div>
