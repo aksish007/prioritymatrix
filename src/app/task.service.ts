@@ -63,19 +63,19 @@ export class TaskService {
   getTasksByQuadrant() {
     return [
       {
-        title: 'Urgent and Important',
+        title: 'Urgent and Important (Do)',
         tasks: this.matrixTasks.filter((task) => task.urgent >= 4 && task.important >= 4),
       },
       {
-        title: 'Not Urgent but Important',
+        title: 'Not Urgent but Important (Schedule)',
         tasks: this.matrixTasks.filter((task) => task.urgent < 4 && task.important >= 4),
       },
       {
-        title: 'Urgent but Not Important',
+        title: 'Urgent but Not Important (Delegate)',
         tasks: this.matrixTasks.filter((task) => task.urgent >= 4 && task.important < 4),
       },
       {
-        title: 'Not Urgent and Not Important',
+        title: 'Not Urgent and Not Important (Eliminate)',
         tasks: this.matrixTasks.filter((task) => task.urgent < 4 && task.important < 4),
       },
     ];
