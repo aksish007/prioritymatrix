@@ -23,6 +23,7 @@ import { trigger, style, animate, transition } from '@angular/animations';
     MatListModule,
     MatIconModule,
     MatButtonModule,
+    MatTooltipModule,
     AngularSplitModule
   ],
   animations: [

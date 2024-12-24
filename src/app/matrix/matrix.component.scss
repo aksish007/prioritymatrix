@@ -1,66 +1,119 @@
 .matrix-container {
-    padding: 20px;
+    padding: 24px;
+    background-color: #f5f5f5;
+    min-height: 100vh;
   }
   
   .matrix-title {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 24px;
-    font-weight: 600;
-    color: #333;
-    margin-bottom: 20px;
+    font-size: 28px;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid #e0e0e0;
+
+    .mat-icon-button {
+      background-color: #fff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+
+      &:hover {
+        background-color: #f0f0f0;
+        transform: rotate(180deg);
+      }
+    }
   }
   
   .matrix-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
-    gap: 10px;
+    gap: 24px;
     position: relative;
+    margin: 24px 0;
+    min-height: 800px;
   }
   
   .quadrant {
-    padding: 20px;
-    border: 2px solid #ccc;
-    background-color: #e3f2fd;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 24px;
+    border: none;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    overflow-y: auto; /* Ensure that the content inside the quadrant can scroll */
-    max-height: 400px; /* Set a maximum height for the quadrant */
+    gap: 12px;
+    overflow-y: auto;
+    max-height: 450px;
+    transition: all 0.3s ease;
+
+    &:hover {
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+      transform: translateY(-2px);
+    }
+
+    &.cdk-drop-list-dragging {
+      background-color: #f8f9fa;
+    }
   }
   
   .quadrant h3 {
-    margin-top: 0;
-    font-size: 18px;
-    font-weight: 600;
-    color: #333;
+    margin: 0 0 16px 0;
+    font-size: 20px;
+    font-weight: 700;
+    color: #2c3e50;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #e0e0e0;
   }
   
   .task-item {
     background: #fff;
-    padding: 10px;
-    border-radius: 5px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    padding: 16px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 100%; /* Ensure the task item does not exceed the width of the quadrant */
-    word-wrap: break-word; /* Ensure long words break and do not overflow */
-    overflow: hidden; /* Hide any overflow content */
+    max-width: 100%;
+    word-wrap: break-word;
+    overflow: hidden;
+    border-left: 4px solid #3498db;
+    transition: all 0.2s ease;
+    cursor: move;
+
+    &:hover {
+      background-color: #f8f9fa;
+      transform: translateX(4px);
+    }
+
+    &.cdk-drag-preview {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      background-color: #fff;
+    }
+
+    &.cdk-drag-placeholder {
+      opacity: 0.3;
+    }
+
+    &.cdk-drag-animating {
+      transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+    }
   }
   
   .task-text {
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 500;
-    color: #555;
-    white-space: nowrap; /* Prevent text from wrapping */
-    overflow: hidden; /* Hide any overflow content */
-    text-overflow: ellipsis; /* Show ellipsis when text overflows */
-    max-width: 100%; /* Ensure the text does not exceed the width of the task item */
+    color: #34495e;
+    line-height: 1.4;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    white-space: normal;
   }
   
   .arrows {
