@@ -75,8 +75,19 @@ export class InputTaskComponent implements OnInit, OnDestroy {
   }
 
   addOrUpdateTask() {
-    if (this.taskForm.invalid) {
+    // Validate form only when adding new task
+    if (!this.isEditMode && this.taskForm?.invalid) {
       this.snackBar.open('Please fill in all required fields', 'Close', {
+        duration: 3000,
+        horizontalPosition: 'end',
+        verticalPosition: 'top',
+      });
+      return;
+    }
+    
+    // Validate required fields for both add and edit
+    if (!this.title.trim() || !this.description.trim()) {
+      this.snackBar.open('Title and description are required', 'Close', {
         duration: 3000,
         horizontalPosition: 'end',
         verticalPosition: 'top',
@@ -101,12 +112,19 @@ export class InputTaskComponent implements OnInit, OnDestroy {
   }
 
   editTask(task: Task) {
+    // Create a copy of the task to prevent direct binding
     this.editedTaskId = task.id;
     this.title = task.title;
     this.description = task.description;
     this.urgent = task.urgent;
     this.important = task.important;
     this.isEditMode = true;
+    
+    // Scroll to the edited task
+    setTimeout(() => {
+      const element = document.querySelector('.editing');
+      element?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }, 100);
   }
 
   deleteTask(taskId: number) {
@@ -137,6 +155,14 @@ export class InputTaskComponent implements OnInit, OnDestroy {
     this.important = 1;
     this.isEditMode = false;
     this.editedTaskId = null;
+    
+    // Reset the form validation state if form exists
+    if (this.taskForm) {
+      this.taskForm.resetForm({
+        urgent: 1,
+        important: 1
+      });
+    }
   }
 
   ngOnDestroy() {

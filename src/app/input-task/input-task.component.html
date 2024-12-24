@@ -2,7 +2,7 @@
     <mat-card class="task-list-card">
       <h2 class="task-list-title">Task List</h2>
   
-      <form #taskForm="ngForm" (ngSubmit)="addOrUpdateTask()" class="inline-form">
+      <form #taskForm="ngForm" (ngSubmit)="addOrUpdateTask()" class="inline-form" *ngIf="!isEditMode">
         <mat-form-field appearance="outline" class="inline-input">
           <mat-label>Title</mat-label>
           <input 
