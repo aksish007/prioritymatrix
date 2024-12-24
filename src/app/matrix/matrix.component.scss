@@ -71,22 +71,22 @@
   }
   
   .task-item {
-    background: #fff;
+    background: var(--bg-secondary);
     padding: 16px;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 2px 4px var(--shadow-color);
     display: flex;
     justify-content: space-between;
     align-items: center;
     max-width: 100%;
     word-wrap: break-word;
     overflow: hidden;
-    border-left: 4px solid #3498db;
+    border-left: 4px solid var(--secondary-color);
     transition: all 0.2s ease;
     cursor: move;
 
     &:hover {
-      background-color: #f8f9fa;
+      background-color: var(--hover-bg);
       transform: translateX(4px);
     }
 
@@ -107,7 +107,7 @@
   .task-text {
     font-size: 15px;
     font-weight: 500;
-    color: #34495e;
+    color: var(--text-primary);
     line-height: 1.4;
     overflow: hidden;
     text-overflow: ellipsis;
