@@ -12,9 +12,9 @@
     <div class="matrix-grid">
       <div *ngFor="let quadrant of quadrants; let i = index" class="quadrant" cdkDropList [cdkDropListData]="quadrant.tasks" (cdkDropListDropped)="drop($event)">
         <h3>{{ quadrant.title }}</h3>
-        <div *ngFor="let task of quadrant.tasks" cdkDrag class="task-item" [@fadeIn]>
+        <div *ngFor="let task of quadrant.tasks; let taskIndex = index" cdkDrag class="task-item" [@fadeIn]>
           <mat-list-item>
-            <span [title]="task.title + ' - ' + task.description" class="task-text">{{ task.title }} - {{ task.description }}</span>
+            <span [title]="task.title + ' - ' + task.description" class="task-text">{{ quadrant.tasks.length > 0 ? getTaskRanking(i, taskIndex) : '' }}{{ task.title }} - {{ task.description }}</span>
           </mat-list-item>
         </div>
       </div>

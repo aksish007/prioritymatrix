@@ -40,6 +40,12 @@ export class MatrixComponent implements OnInit, OnDestroy {
   quadrants: { title: string; tasks: Task[] }[] = [];
   matrixTasksSubscription: Subscription | null = null;
 
+  getTaskRanking(quadrantIndex: number, taskIndex: number): string {
+    const totalTasksInQuadrant = this.quadrants[quadrantIndex].tasks.length;
+    if (totalTasksInQuadrant === 0) return '';
+    return `[${taskIndex + 1}/${totalTasksInQuadrant}] `;
+  }
+
   constructor(private taskService: TaskService) {}
 
   ngOnInit() {
