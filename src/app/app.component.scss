@@ -12,20 +12,21 @@
 
 .app-header {
   background: var(--header-bg);
-  color: white;
+  color: var(--text-primary);
   padding: 1rem;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 4px var(--shadow-color);
 
   h1 {
     margin: 0;
     font-size: 1.75rem;
     font-weight: 500;
+    color: var(--text-primary);
   }
 
   .app-subtitle {
     margin: 0.5rem 0 0;
     font-size: 1rem;
-    opacity: 0.9;
+    color: var(--text-secondary);
   }
 }
 
@@ -83,14 +84,15 @@
 }
 
 .app-footer {
-  background-color: #3f51b5;
-  color: white;
+  background-color: var(--footer-bg);
+  color: var(--text-primary);
   padding: 0.75rem;
   text-align: center;
   font-size: 0.875rem;
   
   p {
     margin: 0;
+    color: var(--text-primary);
   }
 }
   
@@ -105,17 +107,17 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.2);
+  background: var(--scrollbar-thumb);
   border-radius: 3px;
   
   &:hover {
-    background: rgba(0, 0, 0, 0.3);
+    background: var(--scrollbar-thumb-hover);
   }
 }
 
 /* Firefox scrollbar */
 * {
   scrollbar-width: thin;
-  scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
+  scrollbar-color: var(--scrollbar-thumb) transparent;
 }
   
