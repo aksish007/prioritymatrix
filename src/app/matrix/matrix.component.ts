@@ -41,9 +41,14 @@ export class MatrixComponent implements OnInit, OnDestroy {
   matrixTasksSubscription: Subscription | null = null;
 
   getTaskRanking(quadrantIndex: number, taskIndex: number): string {
-    const totalTasksInQuadrant = this.quadrants[quadrantIndex].tasks.length;
-    if (totalTasksInQuadrant === 0) return '';
-    return `#${taskIndex + 1} `;
+    if (this.quadrants[quadrantIndex].tasks.length === 0) return '';
+    
+    let startNumber = 1;
+    // Add up all tasks from previous quadrants
+    for (let i = 0; i < quadrantIndex; i++) {
+      startNumber += this.quadrants[i].tasks.length;
+    }
+    return `#${startNumber + taskIndex} `;
   }
 
   constructor(private taskService: TaskService) {}
