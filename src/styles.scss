@@ -1,6 +1,31 @@
+:root {
+  --bg-primary: #f8f9fa;
+  --bg-secondary: #ffffff;
+  --text-primary: #000000;
+  --text-secondary: #666666;
+  --header-bg: linear-gradient(135deg, #3f51b5 0%, #2196f3 100%);
+  --footer-bg: #3f51b5;
+  --card-bg: #ffffff;
+  --border-color: #e9ecef;
+  --quadrant-bg: #e3f2fd;
+}
+
+.dark-theme {
+  --bg-primary: #121212;
+  --bg-secondary: #1e1e1e;
+  --text-primary: #ffffff;
+  --text-secondary: #cccccc;
+  --header-bg: linear-gradient(135deg, #1a237e 0%, #0d47a1 100%);
+  --footer-bg: #1a237e;
+  --card-bg: #2d2d2d;
+  --border-color: #333333;
+  --quadrant-bg: #1e1e1e;
+}
+
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: #f4f4f4;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
     margin: 0;
     padding: 0;
     display: flex;

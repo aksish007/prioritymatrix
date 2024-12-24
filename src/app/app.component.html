@@ -1,7 +1,14 @@
 <div class="app-container">
   <header class="app-header">
-    <h1>Priority Matrix</h1>
-    <p class="app-subtitle">Organize tasks by urgency and importance</p>
+    <div class="header-content">
+      <div class="header-title">
+        <h1>Priority Matrix</h1>
+        <p class="app-subtitle">Organize tasks by urgency and importance</p>
+      </div>
+      <button mat-icon-button (click)="toggleTheme()" class="theme-toggle">
+        <mat-icon>{{ isDarkMode$ | async ? 'light_mode' : 'dark_mode' }}</mat-icon>
+      </button>
+    </div>
   </header>
   
   <main class="app-content">
