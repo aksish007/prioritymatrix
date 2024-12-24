@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { TaskService } from '../task.service';
 import { Task } from '../models/task.model';
 import { FormsModule } from '@angular/forms';
@@ -14,6 +14,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { NgxSliderModule, Options } from '@angular-slider/ngx-slider';
 import { Subscription } from 'rxjs';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-input-task',
@@ -31,7 +32,7 @@ import { Subscription } from 'rxjs';
     MatIconModule,
     DragDropModule,
     NgxSliderModule,
-    MatSnackBar,
+    MatSnackBarModule,
     MatTooltipModule,
   ],
 })
