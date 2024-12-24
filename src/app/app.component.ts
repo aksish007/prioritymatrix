@@ -7,6 +7,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
 import { ThemeService } from './services/theme.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -25,11 +26,18 @@ import { ThemeService } from './services/theme.service';
 })
 export class AppComponent {
   title = 'priority-matrix';
-  isDarkMode$ = this.themeService.isDarkMode$;
+  isDarkMode$: Observable<boolean>;
 
-  constructor(private themeService: ThemeService) {}
+  constructor(private themeService: ThemeService) {
+    this.isDarkMode$ = this.themeService.isDarkMode$;
+  }
 
   toggleTheme() {
     this.themeService.toggleTheme();
   }
+
+  getThemeIcon(): string {
+    return this.isDarkMode$ ? 'dark_mode' : 'light_mode';
+  }
+  
 }
