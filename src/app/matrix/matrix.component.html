@@ -14,7 +14,7 @@
         <h3>{{ quadrant.title }}</h3>
         <div *ngFor="let task of quadrant.tasks; let taskIndex = index" cdkDrag class="task-item" [@fadeIn]>
           <mat-list-item>
-            <span [title]="task.title + ' - ' + task.description" class="task-text">{{ quadrant.tasks.length > 0 ? getTaskRanking(i, taskIndex) : '' }}{{ task.title }} - {{ task.description }}</span>
+            <span [title]="task.title + ' - ' + task.description" class="task-text">{{ getTaskRanking(i, taskIndex) }}{{ task.title }} - {{ task.description }}</span>
           </mat-list-item>
         </div>
       </div>
