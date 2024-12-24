@@ -10,6 +10,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { AngularSplitModule } from 'angular-split';
 import { Subscription } from 'rxjs';
 import { trigger, style, animate, transition } from '@angular/animations';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-matrix',
