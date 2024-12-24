@@ -1,14 +1,18 @@
 .input-panel {
     display: flex;
     flex-direction: column;
-    gap: 20px;
-  }
-  
-  .task-list-card {
+    gap: 24px;
+    max-width: 800px;
+    margin: 0 auto;
     padding: 20px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-  }
+}
+  
+.task-list-card {
+    padding: 24px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    border-radius: 12px;
+    background: #ffffff;
+}
   
   .task-list-title {
     margin-bottom: 20px;
@@ -41,11 +45,44 @@
     color: #555;
   }
   
-  .button-group {
+.button-group {
     display: flex;
-    gap: 10px;
+    gap: 16px;
     justify-content: flex-end;
-  }
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #e9ecef;
+}
+
+.form-buttons {
+    display: flex;
+    gap: 12px;
+    margin-top: 16px;
+}
+
+.validation-error {
+    color: #dc3545;
+    font-size: 12px;
+    margin-top: 4px;
+}
+
+.task-meta {
+    display: flex;
+    gap: 16px;
+    color: #6c757d;
+    font-size: 14px;
+    margin-top: 8px;
+}
+
+.priority-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 8px;
+    border-radius: 4px;
+    background: #e9ecef;
+    font-size: 12px;
+}
   
   .task-list-container {
     max-height: 300px; /* Adjust based on your design */
@@ -58,15 +95,31 @@
     gap: 10px;
   }
   
-  .task-item {
-    background: #fff;
-    padding: 10px;
-    border-radius: 5px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+.task-item {
+    background: #f8f9fa;
+    padding: 16px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     display: flex;
     justify-content: space-between;
     align-items: center;
-  }
+    transition: all 0.2s ease;
+    border: 1px solid #e9ecef;
+    
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .mat-icon-button {
+        opacity: 0.7;
+        transition: opacity 0.2s ease;
+
+        &:hover {
+            opacity: 1;
+        }
+    }
+}
   
   .task-text {
     font-size: 16px;

@@ -1,4 +1,6 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { TaskService } from '../task.service';
 import { Task } from '../models/task.model';
 import { FormsModule } from '@angular/forms';
@@ -29,6 +31,8 @@ import { Subscription } from 'rxjs';
     MatIconModule,
     DragDropModule,
     NgxSliderModule,
+    MatSnackBar,
+    MatTooltipModule,
   ],
 })
 export class InputTaskComponent implements OnInit, OnDestroy {
@@ -56,7 +60,12 @@ export class InputTaskComponent implements OnInit, OnDestroy {
     showTicks: true
   };
 
-  constructor(private taskService: TaskService) {}
+  @ViewChild('taskForm') taskForm!: NgForm;
+  
+  constructor(
+    private taskService: TaskService,
+    private snackBar: MatSnackBar
+  ) {}
 
   ngOnInit() {
     this.tasksSubscription = this.taskService.getTasks().subscribe(tasks => {
@@ -65,6 +74,14 @@ export class InputTaskComponent implements OnInit, OnDestroy {
   }
 
   addOrUpdateTask() {
+    if (this.taskForm.invalid) {
+      this.snackBar.open('Please fill in all required fields', 'Close', {
+        duration: 3000,
+        horizontalPosition: 'end',
+        verticalPosition: 'top',
+      });
+      return;
+    }
     const task: Task = {
       id: this.editedTaskId ?? Date.now(),
       title: this.title,

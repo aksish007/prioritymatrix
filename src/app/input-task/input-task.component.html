@@ -2,10 +2,20 @@
     <mat-card class="task-list-card">
       <h2 class="task-list-title">Task List</h2>
   
-      <div *ngIf="!isEditMode" class="inline-form">
+      <form #taskForm="ngForm" (ngSubmit)="addOrUpdateTask()" class="inline-form">
         <mat-form-field appearance="outline" class="inline-input">
           <mat-label>Title</mat-label>
-          <input title="Title" matInput [(ngModel)]="title" name="title" required />
+          <input 
+            matInput 
+            [(ngModel)]="title" 
+            name="title" 
+            required 
+            #titleInput="ngModel"
+            placeholder="Enter task title"
+          />
+          <mat-error *ngIf="titleInput.invalid && titleInput.touched">
+            Title is required
+          </mat-error>
         </mat-form-field>
   
         <mat-form-field appearance="outline" class="inline-input">
@@ -27,12 +37,31 @@
       </div>
       <div class="task-list-container">
         <div cdkDropListGroup class="task-list">
-            <div *ngFor="let task of tasks" cdkDrag class="task-item">
+            <div *ngFor="let task of tasks" cdkDrag class="task-item" [class.editing]="editedTaskId === task.id">
             <mat-list-item>
                 <div *ngIf="editedTaskId !== task.id">
-                <span class="task-text">{{ task.title }} - {{ task.description }}</span>
-                <button mat-icon-button (click)="editTask(task)"><mat-icon>edit</mat-icon></button>
-                <button mat-icon-button (click)="deleteTask(task.id)"><mat-icon>delete</mat-icon></button>
+                    <div class="task-content">
+                        <span class="task-text">{{ task.title }}</span>
+                        <p class="task-description">{{ task.description }}</p>
+                        <div class="task-meta">
+                            <span class="priority-badge">
+                                <mat-icon>priority_high</mat-icon>
+                                Urgent: {{ task.urgent }}
+                            </span>
+                            <span class="priority-badge">
+                                <mat-icon>star</mat-icon>
+                                Important: {{ task.important }}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="task-actions">
+                        <button mat-icon-button color="primary" (click)="editTask(task)" matTooltip="Edit task">
+                            <mat-icon>edit</mat-icon>
+                        </button>
+                        <button mat-icon-button color="warn" (click)="deleteTask(task.id)" matTooltip="Delete task">
+                            <mat-icon>delete</mat-icon>
+                        </button>
+                    </div>
                 </div>
                 <div *ngIf="editedTaskId === task.id" class="inline-form">
                 <mat-form-field appearance="outline" class="inline-input">
