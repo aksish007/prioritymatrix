@@ -33,13 +33,51 @@
   flex: 1;
   padding: 1rem;
   overflow: hidden;
-  background-color: #ffffff;
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
 
   ::ng-deep .as-split-gutter {
-    background-color: #e9ecef;
+    background-color: var(--border-color);
     
     &:hover {
-      background-color: #dee2e6;
+      background-color: var(--hover-bg);
+    }
+  }
+
+  ::ng-deep {
+    // Style Material components
+    .mat-card {
+      background-color: var(--mat-card-bg);
+      color: var(--mat-card-text);
+    }
+
+    .mat-form-field {
+      .mat-input-element {
+        color: var(--input-text);
+      }
+      .mat-form-field-label {
+        color: var(--text-secondary);
+      }
+      .mat-form-field-underline {
+        background-color: var(--border-color);
+      }
+    }
+
+    .mat-slider {
+      .mat-slider-track-background {
+        background-color: var(--slider-bg);
+      }
+      .mat-slider-track-fill {
+        background-color: var(--slider-fill);
+      }
+      .mat-slider-thumb {
+        background-color: var(--slider-fill);
+      }
+    }
+
+    .mat-button, .mat-raised-button {
+      background-color: var(--button-primary);
+      color: var(--button-text);
     }
   }
 }
