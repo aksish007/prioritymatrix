@@ -9,16 +9,17 @@
   
 .task-list-card {
     padding: 24px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 12px var(--shadow-color);
     border-radius: 12px;
-    background: #ffffff;
+    background: var(--card-bg);
+    color: var(--text-primary);
 }
   
   .task-list-title {
     margin-bottom: 20px;
     font-size: 24px;
     font-weight: 600;
-    color: #333;
+    color: var(--text-primary);
   }
   
   .inline-form {
@@ -42,7 +43,7 @@
   
   .slider-label {
     font-weight: 500;
-    color: #555;
+    color: var(--text-secondary);
   }
   
 .button-group {
@@ -51,7 +52,7 @@
     justify-content: flex-end;
     margin-top: 20px;
     padding-top: 20px;
-    border-top: 1px solid #e9ecef;
+    border-top: 1px solid var(--border-color);
 }
 
 .form-buttons {
@@ -96,15 +97,16 @@
   }
   
 .task-item {
-    background: #f8f9fa;
+    background: var(--bg-secondary);
     padding: 16px;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 2px 4px var(--shadow-color);
     display: flex;
     justify-content: space-between;
     align-items: center;
     transition: all 0.2s ease;
-    border: 1px solid #e9ecef;
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
     
     &:hover {
         transform: translateY(-2px);

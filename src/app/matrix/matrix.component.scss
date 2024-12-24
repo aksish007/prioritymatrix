@@ -1,7 +1,8 @@
 .matrix-container {
     padding: 24px;
-    background-color: #f5f5f5;
+    background-color: var(--bg-tertiary);
     min-height: 100vh;
+    color: var(--text-primary);
   }
   
   .matrix-title {
@@ -10,10 +11,10 @@
     align-items: center;
     font-size: 28px;
     font-weight: 700;
-    color: #2c3e50;
+    color: var(--text-primary);
     margin-bottom: 24px;
     padding-bottom: 16px;
-    border-bottom: 2px solid #e0e0e0;
+    border-bottom: 2px solid var(--border-color);
 
     .mat-icon-button {
       background-color: #fff;
@@ -40,9 +41,9 @@
   .quadrant {
     padding: 24px;
     border: none;
-    background-color: #ffffff;
+    background-color: var(--card-bg);
     border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 12px var(--shadow-color);
     display: flex;
     flex-direction: column;
     gap: 12px;
