@@ -3,3 +3,8 @@
 
 [functions.ping-render-api]
   schedule = "*/15 * * * *"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
