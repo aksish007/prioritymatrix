@@ -2,4 +2,4 @@
   directory = "netlify/functions"
 
 [functions.ping-render-api]
-  schedule = "*/5 * * * *"
+  schedule = "*/15 * * * *"
