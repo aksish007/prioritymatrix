@@ -38,7 +38,7 @@ export class TaskService {
   }
 
   updateTask(updatedTask: Task) {
-    const taskIndex = this.tasks.findIndex(task => task.id === updatedTask.id);
+    const taskIndex = this.tasks.findIndex(task => task._id === updatedTask._id);
     if (taskIndex > -1) {
       this.tasks[taskIndex] = updatedTask;
     }
@@ -46,8 +46,8 @@ export class TaskService {
     this.saveTasks();
   }
 
-  deleteTask(taskId: number) {
-    this.tasks = this.tasks.filter(task => task.id !== taskId);
+  deleteTask(taskId: string) {
+    this.tasks = this.tasks.filter(task => task._id !== taskId);
     this.tasksSubject.next(this.tasks);
     this.saveTasks();
   }

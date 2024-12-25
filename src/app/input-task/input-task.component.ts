@@ -95,7 +95,7 @@ export class InputTaskComponent implements OnInit, OnDestroy {
       return;
     }
     const task: Task = {
-      id: this.editedTaskId ?? Date.now(),
+      _id: this.editedTaskId ?? undefined,
       title: this.title,
       description: this.description,
       urgent: this.urgent,
@@ -113,7 +113,7 @@ export class InputTaskComponent implements OnInit, OnDestroy {
 
   editTask(task: Task) {
     // Create a copy of the task to prevent direct binding
-    this.editedTaskId = task.id;
+    this.editedTaskId = task._id;
     this.title = task.title;
     this.description = task.description;
     this.urgent = task.urgent;
@@ -127,7 +127,7 @@ export class InputTaskComponent implements OnInit, OnDestroy {
     }, 100);
   }
 
-  deleteTask(taskId: number) {
+  deleteTask(taskId: string) {
     this.taskService.deleteTask(taskId);
     if (this.editedTaskId === taskId) {
       this.resetForm();
@@ -148,7 +148,6 @@ export class InputTaskComponent implements OnInit, OnDestroy {
   }
 
   resetForm() {
-    this.id = null;
     this.title = '';
     this.description = '';
     this.urgent = 1;
