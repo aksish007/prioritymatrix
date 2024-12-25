@@ -37,9 +37,9 @@
       </form>
       <div class="task-list-container">
         <div cdkDropListGroup class="task-list">
-            <div *ngFor="let task of tasks" cdkDrag class="task-item" [class.editing]="editedTaskId === task.id">
+            <div *ngFor="let task of tasks" cdkDrag class="task-item" [class.editing]="editedTaskId === task._id">
             <mat-list-item>
-                <div *ngIf="editedTaskId !== task.id">
+                <div *ngIf="editedTaskId !== task._id">
                     <div class="task-content">
                         <span class="task-text">{{ task.title }}</span>
                         <p class="task-description">{{ task.description }}</p>
@@ -58,12 +58,12 @@
                         <button mat-icon-button color="primary" (click)="editTask(task)" matTooltip="Edit task">
                             <mat-icon>edit</mat-icon>
                         </button>
-                        <button mat-icon-button color="warn" (click)="deleteTask(task.id)" matTooltip="Delete task">
+                        <button mat-icon-button color="warn" (click)="deleteTask(task._id)" matTooltip="Delete task">
                             <mat-icon>delete</mat-icon>
                         </button>
                     </div>
                 </div>
-                <div *ngIf="editedTaskId === task.id" class="inline-form">
+                <div *ngIf="editedTaskId === task._id" class="inline-form">
                 <mat-form-field appearance="outline" class="inline-input">
                     <mat-label>Title</mat-label>
                     <input title="Title" matInput [(ngModel)]="title" name="title" required />
