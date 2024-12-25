@@ -8,7 +8,7 @@ import { AuthService } from './services/auth.service';
   providedIn: 'root',
 })
 export class TaskService {
-  private apiUrl = 'http://localhost:5001/api/tasks';
+  private apiUrl = 'http://localhost:5000/api/tasks';
   private tasks: Task[] = [];
   private tasksSubject = new BehaviorSubject<Task[]>([]);
   private matrixTasks: Task[] = [];
@@ -34,7 +34,10 @@ export class TaskService {
   }
 
   private loadTasks(userId: string) {
-    this.http.get<Task[]>(`${this.apiUrl}/user/${userId}`).subscribe(tasks => {
+    console.log('Loading tasks for user:', userId);
+    const url = `${this.apiUrl}/user/${userId}`;
+    console.log('Request URL:', url);
+    this.http.get<Task[]>(url).subscribe(tasks => {
       this.matrixTasks = tasks.filter(task => task.isMatrixTask);
       this.tasks = tasks.filter(task => !task.isMatrixTask);
       
