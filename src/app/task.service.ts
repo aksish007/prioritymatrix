@@ -1,55 +1,57 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { Task } from './models/task.model';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TaskService {
-  private tasks: Task[] = this.loadTasks();
-  private tasksSubject: BehaviorSubject<Task[]> = new BehaviorSubject<Task[]>(this.tasks);
-  private matrixTasks: Task[] = this.loadMatrixTasks();
-  private matrixTasksSubject: BehaviorSubject<Task[]> = new BehaviorSubject<Task[]>(this.matrixTasks);
+  private apiUrl = 'http://localhost:3000/api/tasks';
+  private tasks: Task[] = [];
+  private tasksSubject = new BehaviorSubject<Task[]>([]);
+  private matrixTasks: Task[] = [];
+  private matrixTasksSubject = new BehaviorSubject<Task[]>([]);
 
-  private saveTasks() {
-    localStorage.setItem('tasks', JSON.stringify(this.tasks));
-    localStorage.setItem('matrixTasks', JSON.stringify(this.matrixTasks));
+  constructor(private http: HttpClient) {
+    this.loadTasks();
   }
 
-  private loadTasks(): Task[] {
-    const tasks = localStorage.getItem('tasks');
-    return tasks ? JSON.parse(tasks) : [];
-  }
-
-  private loadMatrixTasks(): Task[] {
-    const tasks = localStorage.getItem('matrixTasks');
-    return tasks ? JSON.parse(tasks) : [];
-  }
-
-  constructor() {
-    this.tasksSubject.next(this.tasks);
-    this.matrixTasksSubject.next(this.matrixTasks);
+  private loadTasks() {
+    this.http.get<Task[]>(this.apiUrl).subscribe(tasks => {
+      this.tasks = tasks;
+      this.tasksSubject.next(this.tasks);
+    });
   }
 
   addTask(task: Task) {
-    this.tasks.push(task);
-    this.tasksSubject.next(this.tasks);
-    this.saveTasks();
+    return this.http.post<Task>(this.apiUrl, task).pipe(
+      tap(newTask => {
+        this.tasks.push(newTask);
+        this.tasksSubject.next(this.tasks);
+      })
+    );
   }
 
   updateTask(updatedTask: Task) {
-    const taskIndex = this.tasks.findIndex(task => task._id === updatedTask._id);
-    if (taskIndex > -1) {
-      this.tasks[taskIndex] = updatedTask;
-    }
-    this.tasksSubject.next(this.tasks);
-    this.saveTasks();
+    return this.http.put<Task>(`${this.apiUrl}/${updatedTask._id}`, updatedTask).pipe(
+      tap(task => {
+        const index = this.tasks.findIndex(t => t._id === task._id);
+        if (index !== -1) {
+          this.tasks[index] = task;
+          this.tasksSubject.next(this.tasks);
+        }
+      })
+    );
   }
 
   deleteTask(taskId: string) {
-    this.tasks = this.tasks.filter(task => task._id !== taskId);
-    this.tasksSubject.next(this.tasks);
-    this.saveTasks();
+    return this.http.delete(`${this.apiUrl}/${taskId}`).pipe(
+      tap(() => {
+        this.tasks = this.tasks.filter(task => task._id !== taskId);
+        this.tasksSubject.next(this.tasks);
+      })
+    );
   }
 
   getTasks(): Observable<Task[]> {
