@@ -5,6 +5,11 @@
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
+    
+    @media (max-width: 768px) {
+        padding: 10px;
+        gap: 16px;
+    }
 }
   
 .task-list-card {
@@ -53,6 +58,15 @@
     margin-top: 20px;
     padding-top: 20px;
     border-top: 1px solid var(--border-color);
+    
+    @media (max-width: 768px) {
+        gap: 10px;
+        flex-direction: column;
+        
+        button {
+            width: 100%;
+        }
+    }
 }
 
 .form-buttons {
@@ -73,6 +87,11 @@
     color: #6c757d;
     font-size: 14px;
     margin-top: 8px;
+    
+    @media (max-width: 768px) {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
 }
 
 .priority-badge {
@@ -103,10 +122,16 @@
     box-shadow: 0 2px 4px var(--shadow-color);
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     transition: all 0.2s ease;
     border: 1px solid var(--border-color);
     color: var(--text-primary);
+    
+    @media (max-width: 768px) {
+        padding: 12px;
+        flex-direction: column;
+        gap: 10px;
+    }
     
     &:hover {
         transform: translateY(-2px);
