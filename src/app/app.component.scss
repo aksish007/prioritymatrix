@@ -13,7 +13,7 @@
 .app-header {
   background: var(--header-bg);
   color: var(--bg-primary);
-  padding: 1rem;
+  padding: 0.75rem;
   box-shadow: 0 2px 4px var(--shadow-color);
 
   .header-content {
@@ -22,12 +22,35 @@
     align-items: center;
     max-width: 1200px;
     margin: 0 auto;
+    padding: 0 0.5rem;
 
-    h1 {
-      margin: 0;
-      font-size: 1.75rem;
-      font-weight: 500;
-      color: var(--bg-primary);
+    @media (max-width: 768px) {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .header-title {
+      h1 {
+        margin: 0;
+        font-size: 1.75rem;
+        font-weight: 500;
+        color: var(--bg-primary);
+
+        @media (max-width: 768px) {
+          font-size: 1.5rem;
+        }
+      }
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+
+      @media (max-width: 768px) {
+        width: 100%;
+        justify-content: space-between;
+      }
     }
 
     .user-info {
@@ -35,8 +58,15 @@
       align-items: center;
       gap: 1rem;
       
-      span {
+      .user-email {
         color: var(--bg-primary);
+
+        @media (max-width: 480px) {
+          max-width: 150px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
       }
 
       button {
@@ -52,6 +82,10 @@
   overflow-y: auto;
   background-color: var(--bg-secondary);
   color: var(--bg-primary);
+
+  @media (max-width: 768px) {
+    padding: 0.5rem;
+  }
 
   ::ng-deep .as-split-gutter {
     background-color: var(--border-color);
@@ -105,6 +139,11 @@
   padding: 0.75rem;
   text-align: center;
   font-size: 0.875rem;
+  
+  @media (max-width: 768px) {
+    padding: 0.5rem;
+    font-size: 0.75rem;
+  }
   
   p {
     margin: 0;

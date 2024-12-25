@@ -1,18 +1,20 @@
 <div class="app-container">
-  <header class="app-header"  *ngIf="authService.user$ | async as user">
+  <header class="app-header" *ngIf="authService.user$ | async as user">
     <div class="header-content">
       <div class="header-title">
         <h1>Priority Matrix</h1>
       </div>
-      <div class="user-info">
-        <span>{{ user.email }}</span>
-        <button mat-icon-button (click)="signOut()">
-          <mat-icon>logout</mat-icon>
+      <div class="header-actions">
+        <div class="user-info">
+          <span class="user-email">{{ user.email }}</span>
+          <button mat-icon-button (click)="signOut()" aria-label="Sign out">
+            <mat-icon>logout</mat-icon>
+          </button>
+        </div>
+        <button mat-icon-button (click)="toggleTheme()" class="theme-toggle" aria-label="Toggle theme">
+          <mat-icon>{{ getThemeIcon() }}</mat-icon>
         </button>
       </div>
-      <button mat-icon-button (click)="toggleTheme()" class="theme-toggle" style="position: absolute; top: 10px; right: 10px;">
-        <mat-icon>{{ getThemeIcon() }}</mat-icon>
-      </button>
     </div>
   </header>
   <div class="app-content">
