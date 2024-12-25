@@ -34,7 +34,10 @@ export class TaskService {
   }
 
   private loadTasks(userId: string) {
-    this.http.get<Task[]>(`${this.apiUrl}/${userId}`).subscribe(tasks => {
+    console.log('Loading tasks for user:', userId);
+    const url = `${this.apiUrl}/${userId}`;
+    console.log('Request URL:', url);
+    this.http.get<Task[]>(url).subscribe(tasks => {
       this.matrixTasks = tasks.filter(task => task.isMatrixTask);
       this.tasks = tasks.filter(task => !task.isMatrixTask);
       
