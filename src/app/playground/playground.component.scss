@@ -16,12 +16,18 @@
 .split-container {
   height: 100%;
   width: 100%;
-  display: flex;
 }
 
 .split-area {
   height: 100%;
   overflow: auto;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+as-split {
+  height: 100%;
+  width: 100%;
 }
 
 .mobile-view {
