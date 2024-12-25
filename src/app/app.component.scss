@@ -12,7 +12,7 @@
 
 .app-header {
   background: var(--header-bg);
-  color: var(--text-primary);
+  color: var(--bg-primary);
   padding: 1rem;
   box-shadow: 0 2px 4px var(--shadow-color);
 
@@ -20,13 +20,13 @@
     margin: 0;
     font-size: 1.75rem;
     font-weight: 500;
-    color: var(--text-primary);
+    color: var(--bg-primary);
   }
 
   .app-subtitle {
     margin: 0.5rem 0 0;
     font-size: 1rem;
-    color: var(--text-secondary);
+    color: var(--bg-secondary);
   }
 }
 
@@ -35,7 +35,7 @@
   padding: 1rem;
   overflow: hidden;
   background-color: var(--bg-secondary);
-  color: var(--text-primary);
+  color: var(--bg-primary);
 
   ::ng-deep .as-split-gutter {
     background-color: var(--border-color);
@@ -57,7 +57,7 @@
         color: var(--input-text);
       }
       .mat-form-field-label {
-        color: var(--text-secondary);
+        color: var(--bg-secondary);
       }
       .mat-form-field-underline {
         background-color: var(--border-color);
@@ -85,14 +85,14 @@
 
 .app-footer {
   background-color: var(--footer-bg);
-  color: var(--text-primary);
+  color: var(--bg-primary);
   padding: 0.75rem;
   text-align: center;
   font-size: 0.875rem;
   
   p {
     margin: 0;
-    color: var(--text-primary);
+    color: var(--bg-primary);
   }
 }
   

@@ -37,7 +37,11 @@ export class AppComponent {
   }
 
   getThemeIcon(): string {
-    return this.isDarkMode$ ? 'dark_mode' : 'light_mode';
+    let icon = 'light_mode';
+    this.isDarkMode$.subscribe(isDarkMode => {
+      icon = isDarkMode ? 'dark_mode' : 'light_mode';
+    });
+    return icon;
   }
   
 }
