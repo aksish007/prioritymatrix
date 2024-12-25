@@ -76,7 +76,7 @@ P1
 3. ~~Bug: Objects are movable in mobile view which is not user friendly~~
 4. ~~Bug: Initally Loaded Data is getting hidden in Priority menu for Mobile View~~ False Positive, Related to #6
 5. Improvement: Add ability to switch between list Mode and Matrix mode easily in mobile view
-6. Figure out a way to keep render service alive which get's down after inactivity and takes 50secs to start
+6. ~~Figure out a way to keep render service alive which get's down after inactivity and takes 50secs to start~~
 7. ~~Bug: After clicking on Add Task with correctly filled form, it shows a Please fill in all required fields message but eventually saves the data~~
 8. ~~Bug: Delete button on the list of input-task list doensn't do anything~~
 9. ~~Improvement: Sort the input-task list by latest at top~~
