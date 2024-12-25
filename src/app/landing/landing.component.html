@@ -1,0 +1,50 @@
+<div class="landing-container">
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <h1>Welcome to Priority Matrix</h1>
+    <p class="hero-subtitle">Make better decisions, achieve more with our intuitive task management tool</p>
+    <button mat-raised-button color="primary" routerLink="/matrix">Get Started</button>
+  </section>
+
+  <!-- Value Proposition -->
+  <section class="value-section">
+    <h2>Why Priority Matrix?</h2>
+    <div class="value-grid">
+      <div class="value-card">
+        <mat-icon>schedule</mat-icon>
+        <h3>Save Time</h3>
+        <p>Quickly identify what needs your attention now</p>
+      </div>
+      <div class="value-card">
+        <mat-icon>psychology</mat-icon>
+        <h3>Better Decisions</h3>
+        <p>Prioritize tasks based on importance and urgency</p>
+      </div>
+      <div class="value-card">
+        <mat-icon>trending_up</mat-icon>
+        <h3>Boost Productivity</h3>
+        <p>Focus on what truly matters to achieve your goals</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQs Section -->
+  <section class="faq-section">
+    <h2>Frequently Asked Questions</h2>
+    <mat-accordion>
+      <mat-expansion-panel *ngFor="let faq of faqs">
+        <mat-expansion-panel-header>
+          <mat-panel-title>{{ faq.question }}</mat-panel-title>
+        </mat-expansion-panel-header>
+        <p>{{ faq.answer }}</p>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </section>
+
+  <!-- About Section -->
+  <section class="about-section">
+    <h2>About Us</h2>
+    <p>Priority Matrix is designed to help professionals and teams make better decisions about how they spend their time. 
+       Built on the principles of the Eisenhower Matrix, our tool helps you focus on what truly matters.</p>
+  </section>
+</div>
