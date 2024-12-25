@@ -34,7 +34,7 @@ export class TaskService {
   }
 
   private loadTasks(userId: string) {
-    this.http.get<Task[]>(`${this.apiUrl}/${userId}`).subscribe(tasks => {
+    this.http.get<Task[]>(`${this.apiUrl}/user/${userId}`).subscribe(tasks => {
       this.matrixTasks = tasks.filter(task => task.isMatrixTask);
       this.tasks = tasks.filter(task => !task.isMatrixTask);
       
