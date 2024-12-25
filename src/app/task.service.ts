@@ -8,7 +8,8 @@ import { AuthService } from './services/auth.service';
   providedIn: 'root',
 })
 export class TaskService {
-  private apiUrl = 'http://localhost:5001/api/tasks';
+  //private apiUrl = 'http://localhost:5001/api/tasks';
+  private apiUrl = 'https://prioritymatrixserver.onrender.com/api/tasks';
   private tasks: Task[] = [];
   private tasksSubject = new BehaviorSubject<Task[]>([]);
   private matrixTasks: Task[] = [];
