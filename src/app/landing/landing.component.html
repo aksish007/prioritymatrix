@@ -3,7 +3,13 @@
   <section class="hero-section">
     <h1>Welcome to Priority Matrix</h1>
     <p class="hero-subtitle">Make better decisions, achieve more with our intuitive task management tool</p>
-    <button mat-raised-button color="primary" routerLink="/matrix">Get Started</button>
+    <ng-container *ngIf="(authService.user$ | async) as user; else loginButton">
+      <button mat-raised-button color="primary" routerLink="/matrix">Go to Matrix</button>
+      <button mat-raised-button color="warn" (click)="signOut()">Sign Out</button>
+    </ng-container>
+    <ng-template #loginButton>
+      <button mat-raised-button color="primary" (click)="signIn()">Sign in with Google</button>
+    </ng-template>
   </section>
 
   <!-- Value Proposition -->
