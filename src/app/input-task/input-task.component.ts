@@ -47,8 +47,6 @@ export class InputTaskComponent implements OnInit, OnDestroy {
   isEditMode: boolean = false;
   editedTaskId: string | null = null;
   tasksSubscription: Subscription | null = null;
-  userId : string = '';
-
   urgentOptions: Options = {
     floor: 1,
     ceil: 5,
@@ -74,10 +72,6 @@ export class InputTaskComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.tasksSubscription = this.taskService.getTasks().subscribe(tasks => {
       this.tasks = tasks;
-    });
-
-    this.authService.userId$.subscribe(userId => {
-      this.userId = userId ?? '';
     });
   }
 
@@ -107,7 +101,6 @@ export class InputTaskComponent implements OnInit, OnDestroy {
       description: this.description,
       urgent: this.urgent,
       important: this.important,
-      userId: this.userId
     };
 
     if (this.isEditMode) {

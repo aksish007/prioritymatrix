@@ -13,13 +13,27 @@ export class TaskService {
   private matrixTasks: Task[] = [];
   private matrixTasksSubject = new BehaviorSubject<Task[]>([]);
 
-  constructor(private http: HttpClient) {
-    this.loadTasks();
+  private userId: string | null = null;
+
+  constructor(
+    private http: HttpClient,
+    private authService: AuthService
+  ) {
+    this.authService.userId$.subscribe(userId => {
+      this.userId = userId;
+      if (userId) {
+        this.loadTasks(userId);
+      } else {
+        this.tasks = [];
+        this.matrixTasks = [];
+        this.tasksSubject.next([]);
+        this.matrixTasksSubject.next([]);
+      }
+    });
   }
 
-  private loadTasks() {
-    this.http.get<Task[]>(this.apiUrl).subscribe(tasks => {
-      // Separate tasks based on isMatrixTask flag
+  private loadTasks(userId: string) {
+    this.http.get<Task[]>(`${this.apiUrl}/${userId}`).subscribe(tasks => {
       this.matrixTasks = tasks.filter(task => task.isMatrixTask);
       this.tasks = tasks.filter(task => !task.isMatrixTask);
       
@@ -118,13 +132,14 @@ export class TaskService {
   }
 
   private saveTasks() {
-    // Save both regular tasks and matrix tasks
+    if (!this.userId) return;
+
     const allTasks = [...this.tasks, ...this.matrixTasks].map(task => ({
       ...task,
-      isMatrixTask: this.matrixTasks.includes(task)
+      isMatrixTask: this.matrixTasks.includes(task),
+      userId: this.userId
     }));
 
-    // Batch update all tasks
     this.http.post(`${this.apiUrl}/batch`, { tasks: allTasks }).subscribe({
       next: response => console.log('Tasks saved successfully'),
       error: err => console.error('Error saving tasks', err)
