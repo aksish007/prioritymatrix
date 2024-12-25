@@ -104,9 +104,39 @@ export class InputTaskComponent implements OnInit, OnDestroy {
     };
 
     if (this.isEditMode) {
-      this.taskService.updateTask(task);
+      this.taskService.updateTask(task).subscribe({
+        next: () => {
+          this.snackBar.open('Task updated successfully', 'Close', {
+            duration: 3000,
+            horizontalPosition: 'end',
+            verticalPosition: 'top',
+          });
+        },
+        error: (error) => {
+          this.snackBar.open('Error updating task: ' + error.message, 'Close', {
+            duration: 3000,
+            horizontalPosition: 'end',
+            verticalPosition: 'top',
+          });
+        }
+      });
     } else {
-      this.taskService.addTask(task);
+      this.taskService.addTask(task).subscribe({
+        next: () => {
+          this.snackBar.open('Task added successfully', 'Close', {
+            duration: 3000,
+            horizontalPosition: 'end',
+            verticalPosition: 'top',
+          });
+        },
+        error: (error) => {
+          this.snackBar.open('Error adding task: ' + error.message, 'Close', {
+            duration: 3000,
+            horizontalPosition: 'end',
+            verticalPosition: 'top',
+          });
+        }
+      });
     }
 
     this.resetForm();

@@ -19,8 +19,12 @@ export class TaskService {
 
   private loadTasks() {
     this.http.get<Task[]>(this.apiUrl).subscribe(tasks => {
-      this.tasks = tasks;
+      // Separate tasks based on isMatrixTask flag
+      this.matrixTasks = tasks.filter(task => task.isMatrixTask);
+      this.tasks = tasks.filter(task => !task.isMatrixTask);
+      
       this.tasksSubject.next(this.tasks);
+      this.matrixTasksSubject.next(this.matrixTasks);
     });
   }
 
@@ -114,11 +118,16 @@ export class TaskService {
   }
 
   private saveTasks() {
-    // Implement the logic to save tasks, e.g., saving to local storage or making an API call
-    this.http.post(`${this.apiUrl}/save`, { tasks: this.tasks, matrixTasks: this.matrixTasks }).subscribe({
+    // Save both regular tasks and matrix tasks
+    const allTasks = [...this.tasks, ...this.matrixTasks].map(task => ({
+      ...task,
+      isMatrixTask: this.matrixTasks.includes(task)
+    }));
+
+    // Batch update all tasks
+    this.http.post(`${this.apiUrl}/batch`, { tasks: allTasks }).subscribe({
       next: response => console.log('Tasks saved successfully'),
       error: err => console.error('Error saving tasks', err)
     });
-
   }
 }

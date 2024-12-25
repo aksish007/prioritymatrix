@@ -24,6 +24,10 @@ const taskSchema = new mongoose.Schema({
   userId: {
     type: String,
     required: true
+  },
+  isMatrixTask: {
+    type: Boolean,
+    default: false
   }
 }, {
   timestamps: true

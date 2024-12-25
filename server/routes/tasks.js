@@ -57,4 +57,20 @@ router.delete('/:id', async (req, res) => {
   }
 });
 
+// Batch update tasks
+router.post('/batch', async (req, res) => {
+  try {
+    const { tasks } = req.body;
+    
+    // Delete all existing tasks for the user
+    await Task.deleteMany({ userId: tasks[0]?.userId });
+    
+    // Insert all tasks
+    const result = await Task.insertMany(tasks);
+    res.status(201).json(result);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+});
+
 module.exports = router;
