@@ -44,7 +44,7 @@ export class InputTaskComponent implements OnInit, OnDestroy {
   important: number = 1;
   tasks: Task[] = [];
   isEditMode: boolean = false;
-  editedTaskId: number | null = null;
+  editedTaskId: string | null = null;
   tasksSubscription: Subscription | null = null;
 
   urgentOptions: Options = {
