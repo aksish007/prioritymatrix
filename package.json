@@ -30,6 +30,7 @@
     "firebase": "^10.14.1",
     "firebase-admin": "^13.0.2",
     "mongoose": "^8.9.2",
+    "ngx-device-detector": "^9.0.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.3"

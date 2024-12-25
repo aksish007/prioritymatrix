@@ -15,6 +15,14 @@
       "request": "launch",
       "preLaunchTask": "npm: test",
       "url": "http://localhost:9876/debug.html"
+    },
+    // add a profile for server/server.js with command node server.js
+    {
+      "name": "server",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/server/server.js",
+      "cwd": "${workspaceFolder}/server"
     }
   ]
 }

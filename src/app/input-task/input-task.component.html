@@ -33,11 +33,11 @@
           <ngx-slider [(ngModel)]="important" [options]="importantOptions" name="important"></ngx-slider>
         </div>
   
-        <button mat-raised-button color="primary" (click)="addOrUpdateTask()">{{ isEditMode ? 'Update Task' : 'Add Task' }}</button>
+        <button mat-raised-button color="primary" type="submit">{{ isEditMode ? 'Update Task' : 'Add Task' }}</button>
       </form>
       <div class="task-list-container">
-        <div cdkDropListGroup class="task-list">
-            <div *ngFor="let task of tasks" cdkDrag class="task-item" [class.editing]="editedTaskId === task._id">
+        <div [attr.cdkDropListGroup]="!isMobile ? '' : null" class="task-list">
+            <div *ngFor="let task of tasks" [attr.cdkDrag]="!isMobile ? '' : null" class="task-item" [class.editing]="editedTaskId === task._id">
             <mat-list-item>
                 <div *ngIf="editedTaskId !== task._id">
                     <div class="task-content">

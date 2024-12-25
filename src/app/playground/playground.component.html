@@ -1,7 +1,7 @@
 <div class="app-container">    
     <main class="app-content">
       <!-- Desktop View -->
-      <div class="split-container desktop-view">
+      <div class="split-container desktop-view" *ngIf="!isMobile">
         <as-split direction="horizontal" gutterSize="8" [useTransition]="true">
           <as-split-area [size]="40" [minSize]="30" class="split-area">
             <app-input-task></app-input-task>
@@ -13,7 +13,7 @@
       </div>
 
       <!-- Mobile View -->
-      <div class="mobile-view">
+      <div class="mobile-view" *ngIf="isMobile">
         <div class="mobile-section">
           <app-input-task></app-input-task>
         </div>
