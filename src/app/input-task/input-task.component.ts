@@ -15,6 +15,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { NgxSliderModule, Options } from '@angular-slider/ngx-slider';
 import { Subscription } from 'rxjs';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-input-task',
@@ -46,6 +47,7 @@ export class InputTaskComponent implements OnInit, OnDestroy {
   isEditMode: boolean = false;
   editedTaskId: string | null = null;
   tasksSubscription: Subscription | null = null;
+  userId : string = '';
 
   urgentOptions: Options = {
     floor: 1,
@@ -65,12 +67,17 @@ export class InputTaskComponent implements OnInit, OnDestroy {
   
   constructor(
     private taskService: TaskService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private authService: AuthService
   ) {}
 
   ngOnInit() {
     this.tasksSubscription = this.taskService.getTasks().subscribe(tasks => {
       this.tasks = tasks;
+    });
+
+    this.authService.userId$.subscribe(userId => {
+      this.userId = userId ?? '';
     });
   }
 
@@ -100,7 +107,7 @@ export class InputTaskComponent implements OnInit, OnDestroy {
       description: this.description,
       urgent: this.urgent,
       important: this.important,
-      userId: 'defaultUserId', // Replace with actual userId
+      userId: this.userId
     };
 
     if (this.isEditMode) {

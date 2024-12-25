@@ -9,9 +9,13 @@ export class AuthService {
   private userSubject: BehaviorSubject<User | null> = new BehaviorSubject<User | null>(null);
   user$: Observable<User | null> = this.userSubject.asObservable();
 
+  private userIdSubject: BehaviorSubject<string | null> = new BehaviorSubject<string | null>(null);
+  userId$: Observable<string | null> = this.userIdSubject.asObservable();
+
   constructor(private auth: Auth) {
     this.auth.onAuthStateChanged(user => {
       this.userSubject.next(user);
+      this.userIdSubject.next(user?.uid || null);
     });
   }
 
