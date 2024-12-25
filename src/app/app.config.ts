@@ -5,7 +5,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
 import { getAuth, provideAuth } from '@angular/fire/auth';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
-import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { authInterceptor } from './interceptors/auth.interceptor';
 
 const firebaseConfig = {
   apiKey: "AIzaSyBk6HChAXHKvOYe0SMRVd1QaIyQS-r-EOg",
@@ -24,6 +24,6 @@ export const appConfig: ApplicationConfig = {
     provideAnimationsAsync(),
     provideFirebaseApp(() => initializeApp(firebaseConfig)),
     provideAuth(() => getAuth()),
-    provideHttpClient(withInterceptors([new AuthInterceptor(null).intercept]))
+    provideHttpClient(withInterceptors([authInterceptor]))
   ]
 };
