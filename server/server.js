@@ -15,8 +15,14 @@ const app = express();
 // Connect to MongoDB
 connectDB();
 
+// Define the CORS options
+const corsOptions = {
+  credentials: true,
+  origin: '*'
+};
+
 // Middleware
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(express.json());
 
 // Routes
