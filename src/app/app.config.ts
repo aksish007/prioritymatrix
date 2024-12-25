@@ -6,13 +6,13 @@ import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
 import { getAuth, provideAuth } from '@angular/fire/auth';
 
 const firebaseConfig = {
-  // Replace with your Firebase config
-  apiKey: "your-api-key",
-  authDomain: "your-auth-domain",
-  projectId: "your-project-id",
-  storageBucket: "your-storage-bucket",
-  messagingSenderId: "your-messaging-sender-id",
-  appId: "your-app-id"
+  apiKey: "AIzaSyBk6HChAXHKvOYe0SMRVd1QaIyQS-r-EOg",
+  authDomain: "prioritymatrix-d45cc.firebaseapp.com",
+  projectId: "prioritymatrix-d45cc",
+  storageBucket: "prioritymatrix-d45cc.firebasestorage.app",
+  messagingSenderId: "632252963530",
+  appId: "1:632252963530:web:32b5ec8b0a449479f77233",
+  measurementId: "G-P05NXV0NGF"
 };
 
 export const appConfig: ApplicationConfig = {
