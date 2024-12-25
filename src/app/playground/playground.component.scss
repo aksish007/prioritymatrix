@@ -15,6 +15,13 @@
 
 .split-container {
   height: 100%;
+  width: 100%;
+  display: flex;
+}
+
+.split-area {
+  height: 100%;
+  overflow: auto;
 }
 
 .mobile-view {
