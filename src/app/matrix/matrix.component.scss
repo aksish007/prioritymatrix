@@ -3,6 +3,10 @@
     background-color: var(--bg-tertiary);
     min-height: 100vh;
     color: var(--text-primary);
+
+    @media (max-width: 768px) {
+      padding: 16px;
+    }
   }
   
   .matrix-title {
@@ -36,6 +40,13 @@
     position: relative;
     margin: 24px 0;
     min-height: 800px;
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+      grid-template-rows: repeat(4, 1fr);
+      min-height: auto;
+      gap: 16px;
+    }
   }
   
   .quadrant {
@@ -50,6 +61,11 @@
     overflow-y: auto;
     max-height: 450px;
     transition: all 0.3s ease;
+
+    @media (max-width: 768px) {
+      padding: 16px;
+      max-height: 300px;
+    }
 
     &:hover {
       box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
@@ -115,6 +131,11 @@
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     white-space: normal;
+
+    @media (max-width: 768px) {
+      font-size: 14px;
+      -webkit-line-clamp: 3;
+    }
   }
   
   .arrows {
@@ -130,6 +151,10 @@
     width: 100%;
     height: 100%;
     z-index: 1;
+
+    @media (max-width: 768px) {
+      display: none;
+    }
   }
   
   .arrow-svg {
