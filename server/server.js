@@ -27,6 +27,7 @@ app.use(express.json());
 
 // Routes
 app.use('/api/tasks', require('./routes/tasks'));
+app.use('/api/health', require('./routes/health'));
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {

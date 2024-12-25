@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Task } from './models/task.model';
-import { BehaviorSubject, Observable, tap } from 'rxjs';
+import { BehaviorSubject, catchError, Observable, tap, throwError } from 'rxjs';
 import { AuthService } from './services/auth.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TaskService {
-  //private apiUrl = 'http://localhost:5001/api/tasks';
-  private apiUrl = 'https://prioritymatrixserver.onrender.com/api/tasks';
+  private apiUrl = 'http://localhost:5001/api/tasks';
+  // private apiUrl = 'https://prioritymatrixserver.onrender.com/api/tasks';
   private tasks: Task[] = [];
   private tasksSubject = new BehaviorSubject<Task[]>([]);
   private matrixTasks: Task[] = [];
@@ -69,13 +69,20 @@ export class TaskService {
   }
 
   deleteTask(taskId: string) {
+    console.log('Attempting to delete task:', taskId);
     return this.http.delete(`${this.apiUrl}/${taskId}`).pipe(
       tap(() => {
         this.tasks = this.tasks.filter(task => task._id !== taskId);
         this.tasksSubject.next(this.tasks);
+        console.log('Task deleted and updated in tasks array');
+      }),
+      catchError((error) => {
+        console.error('Delete failed:', error);
+        return throwError(() => error);
       })
     );
   }
+  
 
   getTasks(): Observable<Task[]> {
     return this.tasksSubject.asObservable();

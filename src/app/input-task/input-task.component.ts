@@ -16,6 +16,7 @@ import { NgxSliderModule, Options } from '@angular-slider/ngx-slider';
 import { Subscription } from 'rxjs';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import { AuthService } from '../services/auth.service';
+import { DeviceDetectorService } from 'ngx-device-detector';
 
 @Component({
   selector: 'app-input-task',
@@ -62,22 +63,33 @@ export class InputTaskComponent implements OnInit, OnDestroy {
     showTicks: true
   };
 
+  isMobile: boolean = false;
+
   @ViewChild('taskForm') taskForm!: NgForm;
   
   constructor(
     private taskService: TaskService,
     private snackBar: MatSnackBar,
-    private authService: AuthService
-  ) {}
+    private authService: AuthService,
+    private deviceService: DeviceDetectorService
+  ) {
+    this.isMobile = this.deviceService.isMobile();
+  }
 
   ngOnInit() {
     this.tasksSubscription = this.taskService.getTasks().subscribe(tasks => {
       this.tasks = tasks;
+      this.sortTasks();
     });
     this.authService.userId$.subscribe(userId => {
       this.userId = userId ?? '';
     });
   }
+
+  private sortTasks() {
+    this.tasks.sort((a, b) => +new Date(b.createdAt!) - +new Date(a.createdAt!));
+  }
+  
 
   addOrUpdateTask() {
     // Validate form only when adding new task
@@ -133,6 +145,7 @@ export class InputTaskComponent implements OnInit, OnDestroy {
             horizontalPosition: 'end',
             verticalPosition: 'top',
           });
+          this.sortTasks();
         },
         error: (error) => {
           this.snackBar.open('Error adding task: ' + error.message, 'Close', {
@@ -166,10 +179,11 @@ export class InputTaskComponent implements OnInit, OnDestroy {
   deleteTask(taskId?: string) {
     if(taskId)
     {
-      this.taskService.deleteTask(taskId);
-      if (this.editedTaskId === taskId) {
-        this.resetForm();
-      }
+      this.taskService.deleteTask(taskId).subscribe(() => {
+        if (this.editedTaskId === taskId) {
+          this.resetForm();
+        }
+      });
     }
   }
 
