@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Task } from './models/task.model';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
+import { AuthService } from './services/auth.service';
 
 @Injectable({
   providedIn: 'root',

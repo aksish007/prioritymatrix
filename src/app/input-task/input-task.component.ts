@@ -39,6 +39,7 @@ import { AuthService } from '../services/auth.service';
 })
 export class InputTaskComponent implements OnInit, OnDestroy {
   id: number | null = null;
+  userId: string = '';
   title: string = '';
   description: string = '';
   urgent: number = 1;
@@ -73,6 +74,9 @@ export class InputTaskComponent implements OnInit, OnDestroy {
     this.tasksSubscription = this.taskService.getTasks().subscribe(tasks => {
       this.tasks = tasks;
     });
+    this.authService.userId$.subscribe(userId => {
+      this.userId = userId ?? '';
+    });
   }
 
   addOrUpdateTask() {
@@ -101,6 +105,7 @@ export class InputTaskComponent implements OnInit, OnDestroy {
       description: this.description,
       urgent: this.urgent,
       important: this.important,
+      userId: this.userId
     };
 
     if (this.isEditMode) {
