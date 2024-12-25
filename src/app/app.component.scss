@@ -16,17 +16,33 @@
   padding: 1rem;
   box-shadow: 0 2px 4px var(--shadow-color);
 
-  h1 {
-    margin: 0;
-    font-size: 1.75rem;
-    font-weight: 500;
-    color: var(--bg-primary);
-  }
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
 
-  .app-subtitle {
-    margin: 0.5rem 0 0;
-    font-size: 1rem;
-    color: var(--bg-secondary);
+    h1 {
+      margin: 0;
+      font-size: 1.75rem;
+      font-weight: 500;
+      color: var(--bg-primary);
+    }
+
+    .user-info {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      
+      span {
+        color: var(--bg-primary);
+      }
+
+      button {
+        color: var(--bg-primary);
+      }
+    }
   }
 }
 
