@@ -41,4 +41,9 @@ export class AuthService {
   isAuthenticated(): boolean {
     return !!this.auth.currentUser;
   }
+
+  // Gnenerate a functiion called getCurrentUser() that returns the current user
+  getCurrentUser(): User | null {
+    return this.auth.currentUser;
+  }
 }
