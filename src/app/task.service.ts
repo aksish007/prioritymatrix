@@ -7,7 +7,7 @@ import { BehaviorSubject, Observable, tap } from 'rxjs';
   providedIn: 'root',
 })
 export class TaskService {
-  private apiUrl = 'http://localhost:3000/api/tasks';
+  private apiUrl = 'http://localhost:5001/api/tasks';
   private tasks: Task[] = [];
   private tasksSubject = new BehaviorSubject<Task[]>([]);
   private matrixTasks: Task[] = [];
@@ -111,5 +111,14 @@ export class TaskService {
     this.matrixTasks = quadrants.flatMap((q) => q.tasks);
     this.matrixTasksSubject.next(this.matrixTasks);
     this.saveTasks();
+  }
+
+  private saveTasks() {
+    // Implement the logic to save tasks, e.g., saving to local storage or making an API call
+    this.http.post(`${this.apiUrl}/save`, { tasks: this.tasks, matrixTasks: this.matrixTasks }).subscribe({
+      next: response => console.log('Tasks saved successfully'),
+      error: err => console.error('Error saving tasks', err)
+    });
+
   }
 }

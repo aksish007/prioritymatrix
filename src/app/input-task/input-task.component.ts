@@ -100,6 +100,7 @@ export class InputTaskComponent implements OnInit, OnDestroy {
       description: this.description,
       urgent: this.urgent,
       important: this.important,
+      userId: 'defaultUserId', // Replace with actual userId
     };
 
     if (this.isEditMode) {
@@ -113,7 +114,7 @@ export class InputTaskComponent implements OnInit, OnDestroy {
 
   editTask(task: Task) {
     // Create a copy of the task to prevent direct binding
-    this.editedTaskId = task._id;
+    this.editedTaskId = task._id ?? null;
     this.title = task.title;
     this.description = task.description;
     this.urgent = task.urgent;
@@ -127,10 +128,13 @@ export class InputTaskComponent implements OnInit, OnDestroy {
     }, 100);
   }
 
-  deleteTask(taskId: string) {
-    this.taskService.deleteTask(taskId);
-    if (this.editedTaskId === taskId) {
-      this.resetForm();
+  deleteTask(taskId?: string) {
+    if(taskId)
+    {
+      this.taskService.deleteTask(taskId);
+      if (this.editedTaskId === taskId) {
+        this.resetForm();
+      }
     }
   }
 
