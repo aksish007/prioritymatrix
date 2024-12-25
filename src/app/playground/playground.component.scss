@@ -15,6 +15,31 @@
   height: 100%;
 }
 
+.mobile-view {
+  display: none;
+  height: 100%;
+  flex-direction: column;
+  gap: 16px;
+
+  .mobile-section {
+    width: 100%;
+    
+    &:first-child {
+      flex: 0 0 auto;
+    }
+    
+    &:last-child {
+      flex: 1;
+      min-height: 0;
+      overflow: auto;
+    }
+  }
+}
+
+.desktop-view {
+  display: block;
+}
+
 // Mobile styles
 @media screen and (max-width: 768px) {
   .app-container {
@@ -23,17 +48,11 @@
     }
   }
 
-  as-split {
-    flex-direction: column !important;
-    
-    .split-area {
-      width: 100% !important;
-      height: auto !important;
-      min-height: 0 !important;
-      
-      &:first-child {
-        margin-bottom: 16px;
-      }
-    }
+  .desktop-view {
+    display: none;
+  }
+
+  .mobile-view {
+    display: flex;
   }
 }

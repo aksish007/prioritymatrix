@@ -1,6 +1,7 @@
 <div class="app-container">    
     <main class="app-content">
-      <as-split direction="horizontal" gutterSize="8" [useTransition]="true" class="split-container">
+      <!-- Desktop View -->
+      <as-split direction="horizontal" gutterSize="8" [useTransition]="true" class="split-container desktop-view">
         <as-split-area [size]="35" [minSize]="30" class="split-area">
           <app-input-task></app-input-task>
         </as-split-area>
@@ -8,5 +9,15 @@
           <app-matrix></app-matrix>
         </as-split-area>
       </as-split>
+
+      <!-- Mobile View -->
+      <div class="mobile-view">
+        <div class="mobile-section">
+          <app-input-task></app-input-task>
+        </div>
+        <div class="mobile-section">
+          <app-matrix></app-matrix>
+        </div>
+      </div>
     </main>
   </div>
