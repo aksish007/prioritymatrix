@@ -5,7 +5,7 @@ export interface Task {
   urgent: number; // urgency level from 1 to 5
   important: number; // importance level from 1 to 5
   userId: string;
+  isMatrixTask?: boolean;
   createdAt?: Date;
   updatedAt?: Date;
 }
-  
