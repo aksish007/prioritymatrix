@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { AngularSplitModule } from 'angular-split';
 import { InputTaskComponent } from '../input-task/input-task.component';
 import { MatrixComponent } from '../matrix/matrix.component';
@@ -11,6 +12,7 @@ import { MatIconModule } from '@angular/material/icon';
   standalone: true,
   imports: [
     CommonModule,
+    FormsModule,
     AngularSplitModule,
     InputTaskComponent,
     MatrixComponent,
