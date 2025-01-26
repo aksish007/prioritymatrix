@@ -23,7 +23,7 @@
           mat-icon-button 
           (click)="toggleTheme()" 
           class="theme-toggle action-button" 
-          [attr.aria-label]="'Switch to ' + (isDarkMode ? 'light' : 'dark') + ' theme'">
+          [attr.aria-label]="'Switch to ' + ((isDarkMode$ | async) ? 'light' : 'dark') + ' theme'">
           <mat-icon>{{ getThemeIcon() }}</mat-icon>
         </button>
       </nav>
