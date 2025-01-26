@@ -89,22 +89,22 @@
         gap: 1rem;
       }
 
-      .action-buttons {
-        display: flex;
-        justify-content: flex-end;
-        gap: 0.5rem;
-      }
     }
 
     .user-info {
       display: flex;
       align-items: center;
-      justify-content: center;
-      gap: 1rem;
+      justify-content: space-between;
+      gap: 0.5rem;
       flex: 1;
       background: rgba(255, 255, 255, 0.1);
       padding: 0.25rem 0.75rem;
       border-radius: 24px;
+
+      .user-actions {
+        display: flex;
+        gap: 0.25rem;
+      }
       
       .user-email {
         color: var(--bg-primary);
