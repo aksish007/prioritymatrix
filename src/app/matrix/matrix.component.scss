@@ -16,12 +16,14 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 16px;
     font-size: 20px;
     font-weight: 700;
     color: var(--text-primary);
     margin-bottom: 16px;
     padding-bottom: 12px;
     border-bottom: 2px solid var(--border-color);
+    min-height: 48px;
 
     @media (min-width: 768px) {
       font-size: 28px;
@@ -29,17 +31,38 @@
       padding-bottom: 16px;
     }
 
-    .mat-icon-button {
-      width: 48px;
-      height: 48px;
+    span {
+      flex: 1;
+      min-width: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .reset-button {
+      flex-shrink: 0;
+      width: 40px;
+      height: 40px;
       background-color: var(--card-bg);
       box-shadow: 0 2px 4px var(--shadow-color);
       transition: all 0.3s ease;
+      margin-left: 8px;
+
+      @media (min-width: 768px) {
+        width: 48px;
+        height: 48px;
+      }
 
       mat-icon {
-        font-size: 24px;
-        width: 24px;
-        height: 24px;
+        font-size: 20px;
+        width: 20px;
+        height: 20px;
+
+        @media (min-width: 768px) {
+          font-size: 24px;
+          width: 24px;
+          height: 24px;
+        }
       }
 
       &:hover {
