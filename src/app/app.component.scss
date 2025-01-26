@@ -26,10 +26,10 @@
 }
 
 .app-header {
-  background: var(--header-bg);
+  background: linear-gradient(to right, var(--header-bg), var(--header-bg-accent, var(--header-bg)));
   color: var(--bg-primary);
-  padding: 0.75rem 0.5rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 1rem 0.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 
   .header-content {
     display: flex;
@@ -50,15 +50,30 @@
     .header-title {
       h1 {
         margin: 0;
-        font-size: 1.25rem;
-        font-weight: 600;
+        font-size: 1.5rem;
+        font-weight: 700;
         color: var(--bg-primary);
         text-align: center;
-        letter-spacing: 0.5px;
+        letter-spacing: 0.75px;
+        text-transform: uppercase;
 
         @media (min-width: 768px) {
-          font-size: 1.5rem;
+          font-size: 1.75rem;
           text-align: left;
+        }
+      }
+
+      .header-subtitle {
+        margin: 0.25rem 0 0;
+        font-size: 0.875rem;
+        color: var(--bg-primary);
+        opacity: 0.9;
+        font-weight: 400;
+        text-align: center;
+
+        @media (min-width: 768px) {
+          text-align: left;
+          font-size: 1rem;
         }
       }
     }
@@ -80,8 +95,11 @@
       display: flex;
       align-items: center;
       justify-content: flex-end;
-      gap: 0.75rem;
+      gap: 1rem;
       flex: 1;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 0.5rem 1rem;
+      border-radius: 24px;
       
       .user-email {
         color: var(--bg-primary);
