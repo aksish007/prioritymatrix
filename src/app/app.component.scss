@@ -109,15 +109,10 @@
       .user-email {
         color: var(--bg-primary);
         font-size: 0.875rem;
-        max-width: 150px;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
         padding: 0.25rem 0;
 
         @media (min-width: 768px) {
           font-size: 1rem;
-          max-width: 250px;
           padding: 0;
         }
       }

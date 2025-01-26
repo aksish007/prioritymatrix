@@ -28,6 +28,7 @@ import { Observable } from 'rxjs';
 export class AppComponent {
   title = 'priority-matrix';
   isDarkMode$: Observable<boolean>;
+  currentYear: number = new Date().getFullYear();
 
   constructor(
     private themeService: ThemeService,
