@@ -27,7 +27,7 @@ export class LandingComponent {
         'The Eisenhower Matrix helps you organize tasks based on urgency and importance, improving decision-making and time management.',
     },
     {
-      question: 'How does Decision Matrix help me?',
+      question: 'How does GetItSorted help me?',
       answer:
         'It visualizes and organizes your tasks into quadrants, helping you focus on what matters most and improving productivity.',
     },

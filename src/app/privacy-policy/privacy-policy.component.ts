@@ -12,5 +12,5 @@ import { MatDividerModule } from '@angular/material/divider';
 })
 export class PrivacyPolicyComponent {
   lastUpdated = new Date('2025-01-26');
-  supportEmail = 'support@prioritymatrix.com';
+  supportEmail = 'support@getitsorted.in';
 }
