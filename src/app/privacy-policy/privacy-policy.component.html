@@ -1,1 +1,69 @@
-<p>privacy-policy works!</p>
+<div class="privacy-policy-container">
+  <mat-card class="policy-card">
+    <mat-card-header>
+      <mat-card-title>Privacy Policy</mat-card-title>
+      <mat-card-subtitle>Last updated: {{ lastUpdated | date:'longDate' }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <section>
+        <h2>Introduction</h2>
+        <p>Welcome to Priority Matrix. We respect your privacy and are committed to protecting your personal data. This privacy policy explains how we collect, use, and safeguard your information when you use our application.</p>
+      </section>
+
+      <mat-divider></mat-divider>
+
+      <section>
+        <h2>Information We Collect</h2>
+        <p>We collect and process the following information:</p>
+        <ul>
+          <li>Authentication information (email address) when you sign up</li>
+          <li>Task data that you create and manage within the application</li>
+          <li>Usage data and preferences to improve your experience</li>
+        </ul>
+      </section>
+
+      <mat-divider></mat-divider>
+
+      <section>
+        <h2>How We Use Your Information</h2>
+        <p>We use your information to:</p>
+        <ul>
+          <li>Provide and maintain our service</li>
+          <li>Notify you about changes to our service</li>
+          <li>Allow you to participate in interactive features</li>
+          <li>Provide customer support</li>
+          <li>Monitor the usage of our service</li>
+        </ul>
+      </section>
+
+      <mat-divider></mat-divider>
+
+      <section>
+        <h2>Data Security</h2>
+        <p>We implement appropriate security measures to protect your personal information. Your data is stored securely in MongoDB and protected by industry-standard encryption protocols.</p>
+      </section>
+
+      <mat-divider></mat-divider>
+
+      <section>
+        <h2>Your Rights</h2>
+        <p>You have the right to:</p>
+        <ul>
+          <li>Access your personal data</li>
+          <li>Correct any inaccurate personal data</li>
+          <li>Request deletion of your personal data</li>
+          <li>Object to processing of your personal data</li>
+          <li>Request transfer of your personal data</li>
+        </ul>
+      </section>
+
+      <mat-divider></mat-divider>
+
+      <section>
+        <h2>Contact Us</h2>
+        <p>If you have any questions about this Privacy Policy, please contact us at:</p>
+        <p>Email: support@prioritymatrix.com</p>
+      </section>
+    </mat-card-content>
+  </mat-card>
+</div>
