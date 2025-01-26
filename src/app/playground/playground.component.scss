@@ -36,6 +36,7 @@
     mat-button-toggle {
       width: 50%;
       color: var(--toggle-text);
+      background-color: var(--toggle-bg);
       
       &.mat-button-toggle-checked {
         background-color: var(--toggle-active);
