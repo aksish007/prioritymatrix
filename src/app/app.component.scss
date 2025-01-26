@@ -13,31 +13,36 @@
 .app-header {
   background: var(--header-bg);
   color: var(--bg-primary);
-  padding: 0.75rem;
-  box-shadow: 0 2px 4px var(--shadow-color);
+  padding: 0.5rem;
+  box-shadow: 0 1px 3px var(--shadow-color);
 
   .header-content {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 0.5rem;
+    padding: 0 0.25rem;
+    gap: 0.25rem;
 
-    @media (max-width: 768px) {
-      flex-direction: column;
-      gap: 0.5rem;
+    @media (min-width: 768px) {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 1rem;
+      gap: 1rem;
     }
 
     .header-title {
       h1 {
         margin: 0;
-        font-size: 1.75rem;
+        font-size: 1.25rem;
         font-weight: 500;
         color: var(--bg-primary);
+        text-align: center;
 
-        @media (max-width: 768px) {
-          font-size: 1.5rem;
+        @media (min-width: 768px) {
+          font-size: 1.75rem;
+          text-align: left;
         }
       }
     }
@@ -45,32 +50,46 @@
     .header-actions {
       display: flex;
       align-items: center;
-      gap: 1rem;
+      justify-content: space-between;
+      width: 100%;
+      gap: 0.5rem;
 
-      @media (max-width: 768px) {
-        width: 100%;
-        justify-content: space-between;
+      @media (min-width: 768px) {
+        width: auto;
+        gap: 1rem;
       }
     }
 
     .user-info {
       display: flex;
       align-items: center;
-      gap: 1rem;
+      gap: 0.5rem;
+      flex: 1;
       
       .user-email {
         color: var(--bg-primary);
+        font-size: 0.875rem;
+        max-width: 120px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
 
-        @media (max-width: 480px) {
-          max-width: 150px;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
+        @media (min-width: 768px) {
+          font-size: 1rem;
+          max-width: 200px;
         }
       }
 
       button {
         color: var(--bg-primary);
+        padding: 4px;
+        
+        .mat-icon {
+          font-size: 20px;
+          height: 20px;
+          width: 20px;
+          line-height: 20px;
+        }
       }
     }
   }
@@ -78,13 +97,13 @@
 
 .app-content {
   flex: 1;
-  padding: 1rem;
+  padding: 0.5rem;
   overflow-y: auto;
   background-color: var(--bg-secondary);
   color: var(--bg-primary);
 
-  @media (max-width: 768px) {
-    padding: 0.5rem;
+  @media (min-width: 768px) {
+    padding: 1rem;
   }
 
   ::ng-deep .as-split-gutter {
