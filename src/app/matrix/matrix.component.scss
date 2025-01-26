@@ -40,13 +40,17 @@
 
   .reset-button {
     background-color: var(--bg-input);
-    color: var(--text-light);
+    color: var(--text-primary);
     box-shadow: 0 2px 4px var(--shadow-color);
     transition: all 0.3s ease;
     height: 36px;
     padding: 0 16px;
     border-radius: 18px;
     border: 1px solid var(--border-color);
+
+    .mat-icon {
+      color: var(--text-primary);
+    }
     
     @media (min-width: 768px) {
       height: 40px;
