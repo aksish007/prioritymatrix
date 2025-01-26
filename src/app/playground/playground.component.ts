@@ -32,6 +32,8 @@ export class PlaygroundComponent {
     this.mobileView = view;
     if (view === 'matrix') {
       this.taskService.autoSortTasks();
+    } else if (view === 'tasks') {
+      this.taskService.resetMatrix();
     }
   }
 }
