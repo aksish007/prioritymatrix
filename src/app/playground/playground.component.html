@@ -2,10 +2,23 @@
   <main class="app-content">
     <!-- Mobile View -->
     <div class="mobile-view">
-      <div class="mobile-section">
+      <div class="view-toggle">
+        <mat-button-toggle-group [(ngModel)]="mobileView">
+          <mat-button-toggle value="tasks">
+            <mat-icon>list</mat-icon>
+            Tasks
+          </mat-button-toggle>
+          <mat-button-toggle value="matrix">
+            <mat-icon>grid_view</mat-icon>
+            Matrix
+          </mat-button-toggle>
+        </mat-button-toggle-group>
+      </div>
+      
+      <div class="mobile-section" *ngIf="mobileView === 'tasks'">
         <app-input-task></app-input-task>
       </div>
-      <div class="mobile-section">
+      <div class="mobile-section" *ngIf="mobileView === 'matrix'">
         <app-matrix></app-matrix>
       </div>
     </div>

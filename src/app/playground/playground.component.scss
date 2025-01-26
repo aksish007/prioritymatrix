@@ -21,6 +21,25 @@
   gap: 16px;
   overflow-y: auto;
 
+  .view-toggle {
+    display: flex;
+    justify-content: center;
+    padding: 8px 0;
+
+    mat-button-toggle-group {
+      width: 100%;
+      max-width: 300px;
+    }
+
+    mat-button-toggle {
+      width: 50%;
+      
+      mat-icon {
+        margin-right: 8px;
+      }
+    }
+  }
+
   .mobile-section {
     width: 100%;
     
