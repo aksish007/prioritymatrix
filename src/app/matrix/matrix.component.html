@@ -1,11 +1,13 @@
-<div class="matrix-container">
+<div class="matrix-container" role="main">
     <h2 class="matrix-title">
       Eisenhower Decision Matrix
       <button mat-icon-button (click)="resetMatrix()" 
               aria-label="Reset Matrix"
               matTooltip="Reset matrix to initial state"
-              matTooltipPosition="left">
-        <mat-icon>refresh</mat-icon>
+              matTooltipPosition="left"
+              class="reset-button">
+        <mat-icon aria-hidden="true">refresh</mat-icon>
+        <span class="visually-hidden">Reset Matrix</span>
       </button>
     </h2>
   
