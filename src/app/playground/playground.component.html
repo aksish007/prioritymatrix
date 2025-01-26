@@ -3,7 +3,7 @@
     <!-- Mobile View -->
     <div class="mobile-view">
       <div class="view-toggle">
-        <mat-button-toggle-group [(ngModel)]="mobileView">
+        <mat-button-toggle-group [(ngModel)]="mobileView" (ngModelChange)="onViewChange($event)">
           <mat-button-toggle value="tasks">
             <mat-icon>list</mat-icon>
             Tasks

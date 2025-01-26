@@ -6,6 +6,7 @@ import { InputTaskComponent } from '../input-task/input-task.component';
 import { MatrixComponent } from '../matrix/matrix.component';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatIconModule } from '@angular/material/icon';
+import { TaskService } from '../task.service';
 
 @Component({
   selector: 'app-playground',
@@ -24,4 +25,13 @@ import { MatIconModule } from '@angular/material/icon';
 })
 export class PlaygroundComponent {
   mobileView: 'tasks' | 'matrix' = 'tasks';
+
+  constructor(private taskService: TaskService) {}
+
+  onViewChange(view: 'tasks' | 'matrix') {
+    this.mobileView = view;
+    if (view === 'matrix') {
+      this.taskService.autoSortTasks();
+    }
+  }
 }
