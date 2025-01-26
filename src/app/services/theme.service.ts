@@ -5,16 +5,36 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class ThemeService {
-  private isDarkMode = new BehaviorSubject<boolean>(false);
+  private readonly THEME_KEY = 'darkMode';
+  private isDarkMode = new BehaviorSubject<boolean>(this.loadThemePreference());
   isDarkMode$ = this.isDarkMode.asObservable();
 
-  toggleTheme() {
-    this.isDarkMode.next(!this.isDarkMode.value);
-    if (this.isDarkMode.value) {
+  constructor() {
+    this.applyTheme(this.isDarkMode.value);
+  }
+
+  private loadThemePreference(): boolean {
+    const savedPreference = localStorage.getItem(this.THEME_KEY);
+    return savedPreference ? JSON.parse(savedPreference) : false;
+  }
+
+  private saveThemePreference(isDark: boolean): void {
+    localStorage.setItem(this.THEME_KEY, JSON.stringify(isDark));
+  }
+
+  private applyTheme(isDark: boolean): void {
+    if (isDark) {
       document.body.classList.add('dark-theme');
     } else {
       document.body.classList.remove('dark-theme');
     }
+  }
+
+  toggleTheme() {
+    const newTheme = !this.isDarkMode.value;
+    this.isDarkMode.next(newTheme);
+    this.saveThemePreference(newTheme);
+    this.applyTheme(newTheme);
   }
 
   getCurrentTheme(): boolean {
