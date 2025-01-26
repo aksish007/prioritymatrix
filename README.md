@@ -83,7 +83,7 @@ P1
 
 Improvements
 -----------------
-1. Add ability to switch between list Mode and Matrix mode easily in mobile view
+1. ~~Add ability to switch between list Mode and Matrix mode easily in mobile view~~
 2. Add Task Completed Marker
 3. Give PDF download options with checkboxes to print out and carry and tick manually
 4. Add Articles about Productivity, Time Management, Goal Settings, Vision Building etc
