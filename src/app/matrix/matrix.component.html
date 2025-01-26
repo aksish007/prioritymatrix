@@ -1,15 +1,15 @@
 <div class="matrix-container" role="main">
-    <h2 class="matrix-title">
-      <span>Eisenhower Decision Matrix</span>
-      <button mat-icon-button (click)="resetMatrix()" 
+    <div class="matrix-header">
+      <h2 class="matrix-title">Eisenhower Decision Matrix</h2>
+      <button mat-button (click)="resetMatrix()" 
               aria-label="Reset Matrix"
               matTooltip="Reset matrix to initial state"
               matTooltipPosition="left"
               class="reset-button">
         <mat-icon aria-hidden="true">refresh</mat-icon>
-        <span class="visually-hidden">Reset Matrix</span>
+        Reset Matrix
       </button>
-    </h2>
+    </div>
   
     <div class="matrix-grid">
       <div *ngFor="let quadrant of quadrants; let i = index" class="quadrant" cdkDropList [cdkDropListData]="quadrant.tasks" (cdkDropListDropped)="drop($event)">
