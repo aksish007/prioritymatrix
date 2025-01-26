@@ -11,5 +11,5 @@ import { MatDividerModule } from '@angular/material/divider';
   styleUrl: './privacy-policy.component.scss'
 })
 export class PrivacyPolicyComponent {
-  lastUpdated = new Date('2024-01-26');
+  lastUpdated = new Date('2025-01-26');
 }
