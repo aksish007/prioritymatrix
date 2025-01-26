@@ -166,6 +166,7 @@ $custom-theme: mat.m2-define-light-theme((
   --bg-primary: linear-gradient(to bottom, #1c1c1e, #2c2c2e);
   --bg-secondary: #1e1e1e;
   --bg-card: #2d2d2d;
+  --bg-input: #363636;
 
   --text-primary: #e0e0e0;
   --text-secondary: #b0b0b0;
@@ -175,6 +176,10 @@ $custom-theme: mat.m2-define-light-theme((
   --button-primary-hover: #42a5f5;
   --button-secondary: #ff7043;
   --button-secondary-hover: #f4511e;
+  
+  --toggle-bg: #363636;
+  --toggle-active: #4a4a4a;
+  --toggle-text: #ffffff;
 
   --shadow-color: rgba(0, 0, 0, 0.5);
   --border-color: #404040;

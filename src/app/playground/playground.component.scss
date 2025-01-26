@@ -29,13 +29,21 @@
     mat-button-toggle-group {
       width: 100%;
       max-width: 300px;
+      background-color: var(--toggle-bg);
+      border: 1px solid var(--border-color);
     }
 
     mat-button-toggle {
       width: 50%;
+      color: var(--toggle-text);
+      
+      &.mat-button-toggle-checked {
+        background-color: var(--toggle-active);
+      }
       
       mat-icon {
         margin-right: 8px;
+        color: var(--toggle-text);
       }
     }
   }
