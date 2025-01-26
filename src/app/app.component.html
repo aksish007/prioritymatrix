@@ -11,6 +11,8 @@
           <span class="user-email" [attr.title]="user.displayName">
             Welcome, {{ user.displayName }}
           </span>
+        </div>
+        <div class="action-buttons">
           <button 
             mat-icon-button 
             (click)="signOut()" 
@@ -19,14 +21,14 @@
             matTooltip="Sign out">
             <mat-icon>logout</mat-icon>
           </button>
+          <button 
+            mat-icon-button 
+            (click)="toggleTheme()" 
+            class="theme-toggle action-button" 
+            [attr.aria-label]="'Switch to ' + ((isDarkMode$ | async) ? 'light' : 'dark') + ' theme'">
+            <mat-icon>{{ getThemeIcon() }}</mat-icon>
+          </button>
         </div>
-        <button 
-          mat-icon-button 
-          (click)="toggleTheme()" 
-          class="theme-toggle action-button" 
-          [attr.aria-label]="'Switch to ' + ((isDarkMode$ | async) ? 'light' : 'dark') + ' theme'">
-          <mat-icon>{{ getThemeIcon() }}</mat-icon>
-        </button>
       </nav>
     </div>
   </header>
