@@ -15,10 +15,10 @@
         </mat-button-toggle-group>
       </div>
       
-      <div class="mobile-section" *ngIf="mobileView === 'tasks'">
+      <div class="mobile-section" *ngIf="mobileView === 'tasks'" #tasksSection>
         <app-input-task></app-input-task>
       </div>
-      <div class="mobile-section" *ngIf="mobileView === 'matrix'">
+      <div class="mobile-section" *ngIf="mobileView === 'matrix'" #matrixSection>
         <app-matrix></app-matrix>
       </div>
     </div>
