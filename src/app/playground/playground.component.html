@@ -1,25 +1,25 @@
 <div class="app-container">    
-    <main class="app-content">
-      <!-- Desktop View -->
-      <div class="split-container desktop-view" *ngIf="!isMobile">
-        <as-split direction="horizontal" gutterSize="8" [useTransition]="true">
-          <as-split-area [size]="40" [minSize]="30" class="split-area">
-            <app-input-task></app-input-task>
-          </as-split-area>
-          <as-split-area [size]="60" [minSize]="40" class="split-area">
-            <app-matrix></app-matrix>
-          </as-split-area>
-        </as-split>
+  <main class="app-content">
+    <!-- Mobile View -->
+    <div class="mobile-view">
+      <div class="mobile-section">
+        <app-input-task></app-input-task>
       </div>
+      <div class="mobile-section">
+        <app-matrix></app-matrix>
+      </div>
+    </div>
 
-      <!-- Mobile View -->
-      <div class="mobile-view" *ngIf="isMobile">
-        <div class="mobile-section">
+    <!-- Desktop View -->
+    <div class="split-container desktop-view">
+      <as-split direction="horizontal" gutterSize="8" [useTransition]="true">
+        <as-split-area [size]="40" [minSize]="30" class="split-area">
           <app-input-task></app-input-task>
-        </div>
-        <div class="mobile-section">
+        </as-split-area>
+        <as-split-area [size]="60" [minSize]="40" class="split-area">
           <app-matrix></app-matrix>
-        </div>
-      </div>
-    </main>
-  </div>
+        </as-split-area>
+      </as-split>
+    </div>
+  </main>
+</div>

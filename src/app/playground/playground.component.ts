@@ -3,7 +3,6 @@ import { Component } from '@angular/core';
 import { AngularSplitModule } from 'angular-split';
 import { InputTaskComponent } from '../input-task/input-task.component';
 import { MatrixComponent } from '../matrix/matrix.component';
-import { DeviceDetectorService } from 'ngx-device-detector';
 
 @Component({
   selector: 'app-playground',
@@ -17,11 +16,4 @@ import { DeviceDetectorService } from 'ngx-device-detector';
   templateUrl: './playground.component.html',
   styleUrl: './playground.component.scss'
 })
-export class PlaygroundComponent {
-  isMobile: boolean = false;
-
-  constructor(private deviceService: DeviceDetectorService){
-    this.isMobile = this.deviceService.isMobile();
-  }
-
-}
+export class PlaygroundComponent {}
