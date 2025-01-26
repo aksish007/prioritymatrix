@@ -75,11 +75,19 @@ P1
 2. ~~Bug: Reload is breaking the page~~
 3. ~~Bug: Objects are movable in mobile view which is not user friendly~~
 4. ~~Bug: Initally Loaded Data is getting hidden in Priority menu for Mobile View~~ False Positive, Related to #6
-5. Improvement: Add ability to switch between list Mode and Matrix mode easily in mobile view
+5. ~~Improvement: Add ability to switch between list Mode and Matrix mode easily in mobile view~~ Moved to Improvements list
 6. ~~Figure out a way to keep render service alive which get's down after inactivity and takes 50secs to start~~
 7. ~~Bug: After clicking on Add Task with correctly filled form, it shows a Please fill in all required fields message but eventually saves the data~~
 8. ~~Bug: Delete button on the list of input-task list doensn't do anything~~
 9. ~~Improvement: Sort the input-task list by latest at top~~
+
+Improvements
+-----------------
+1. Add ability to switch between list Mode and Matrix mode easily in mobile view
+2. Add Task Completed Marker
+3. Give PDF download options with checkboxes to print out and carry and tick manually
+4. Add Articles about Productivity, Time Management, Goal Settings, Vision Building etc
+5. Add Focus mode for tasks with a timer and start stop and pause button.
 
 P2
 -----
